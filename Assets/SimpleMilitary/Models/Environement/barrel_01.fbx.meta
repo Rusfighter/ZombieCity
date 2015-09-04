@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 52c04e2b85488ca4991d8f117981049f
+timeCreated: 1438165263
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -29,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

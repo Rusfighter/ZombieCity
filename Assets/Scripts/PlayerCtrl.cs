@@ -14,16 +14,12 @@ public class PlayerCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		charAnimator = transform.GetChild (0).GetComponent<Animator> ();
-		//weaponsAnimator = transform.GetChild (1).GetComponent<Animator> ();
-
+		weaponsAnimator = transform.GetChild (1).GetComponent<Animator> ();
 		nav = GetComponent <NavMeshAgent> ();
 
-		//charAnimator.SetFloat ("Speed_f", 1);
-		charAnimator.SetInteger ("WeaponType_int", 2);
-		//charAnimator.SetBool ("Shoot_b", true);
 
-		//weaponsAnimator.SetInteger ("WeaponType_int", 2);
-		//weaponsAnimator.SetBool ("Shoot_b", true);
+		charAnimator.SetInteger ("WeaponType_int", 2);
+		weaponsAnimator.SetInteger ("WeaponType_int", 2);
 	}
 	
 	// Update is called once per frame
@@ -33,6 +29,11 @@ public class PlayerCtrl : MonoBehaviour {
 
 		} else if (Input.touchCount > 0) {
 			ClickAction(Input.GetTouch (0).position);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			charAnimator.SetBool("Shoot_b", true);
+			weaponsAnimator.SetBool("Shoot_b", true);
 		}
 
 		if (focus != null) {
@@ -46,7 +47,7 @@ public class PlayerCtrl : MonoBehaviour {
 		//normalize vectors
 		Vector3 lookTo = transform.forward.normalized;
 		lookTo.y = 0;
-		Debug.Log (lookTo);
+//		Debug.Log (lookTo);
 		Vector3 moveDirection = nav.velocity.normalized;
 		moveDirection.y = 0;
 
