@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-//[RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (NavMeshAgent))]
 [RequireComponent (typeof (CapsuleCollider))]
 
@@ -16,8 +14,6 @@ public class PlayerCtrl : MonoBehaviour {
 		charAnimator = transform.GetChild (0).GetComponent<Animator> ();
 		weaponsAnimator = transform.GetChild (1).GetComponent<Animator> ();
 		nav = GetComponent <NavMeshAgent> ();
-
-
 		charAnimator.SetInteger ("WeaponType_int", 2);
 		weaponsAnimator.SetInteger ("WeaponType_int", 2);
 	}
