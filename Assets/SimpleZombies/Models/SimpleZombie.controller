@@ -51,7 +51,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Zombie_Walk
-  m_Speed: 1
+  m_Speed: 2.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -103,10 +103,10 @@ AnimatorStateMachine:
     m_Position: {x: 286, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110240673}
-    m_Position: {x: -24, y: 96, z: 0}
+    m_Position: {x: 36, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110223538}
-    m_Position: {x: 263, y: 35, z: 0}
+    m_Position: {x: 288, y: 12, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
