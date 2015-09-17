@@ -7,11 +7,15 @@ public class WeaponHandler : MonoBehaviour {
     public Weapon[] weapons;
     public Transform weaponContainer; // hand
     public int currentWeaponIdx { get; set; }
+    public Weapon currentWeapon { get; set; }
 
     private LineRenderer gunLine;
     private ParticleSystem gunParticles;
     private Light gunLight;
     private Transform emitter;
+
+    private Ray shootRay;
+    private RaycastHit shootHit;
 
     private bool shooting = false;
 
@@ -55,19 +59,32 @@ public class WeaponHandler : MonoBehaviour {
     {
         while (true)
         {
-
             //calculate end line and see if it hits someone
             if (emitter != null)
             {
-                Vector3 lineEnd = emitter.transform.position + emitter.forward * weapons[currentWeaponIdx].range;
-                StartEffects(lineEnd);
+                shootRay.origin = emitter.transform.position;
+                shootRay.direction = emitter.forward;
+
+                if (Physics.Raycast(shootRay, out shootHit, currentWeapon.range))
+                {
+                    Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+
+                    if (enemy != null)
+                    {
+                        // implement some particle effect in Enemy.GetHit
+                        enemy.GetHit(currentWeapon.damage, shootRay.direction);
+                        StartEffects(shootHit.point);
+                    }
+
+                }/*else StartEffects(shootRay.origin + shootRay.direction * currentWeapon.range);*/
             }
 
             Invoke("StopEffects", 0.05f);
 
-            yield return new WaitForSeconds(weapons[currentWeaponIdx].shootTime);
+            yield return new WaitForSeconds(currentWeapon.shootTime);
         }
     }
+
 
 
     public void setWeapon(int index, Animator anim, string variable = "WeaponType_int")
@@ -85,6 +102,7 @@ public class WeaponHandler : MonoBehaviour {
 
         anim.SetInteger(variable, weapons[index].animation);
         currentWeaponIdx = index;
+        currentWeapon = weapons[index];
 
         if (obj.transform.childCount > 0)
         {
