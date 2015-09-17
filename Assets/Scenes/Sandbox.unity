@@ -93,10 +93,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 485960, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
       propertyPath: m_LocalPosition.x
       value: -.685111582
@@ -128,26 +124,6 @@ Prefab:
     - target: {fileID: 485960, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.data[2].obj
-      value: 
-      objectReference: {fileID: 100016, guid: bc82026269b6eb248b9e0bccb54705a6, type: 2}
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.data[2].damage
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.data[2].range
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.data[2].shootTime
-      value: .200000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: weapons.Array.data[2].animation
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
@@ -548,6 +524,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1958022328}
+    - target: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
   m_IsPrefabParent: 0

@@ -12,13 +12,19 @@ namespace Assets.Scripts
 
         public int currentWeapon = 1;
 
+        public override void Awake()
+        {
+            base.Awake();
+
+            //do stuff
+        }
+
         void Start()
         {
             charAnimator = transform.GetChild(0).GetComponent<Animator>();
-            agent = GetComponent<NavMeshAgent>();
             charAnimator.SetInteger("WeaponType_int", currentWeapon+1);
             weaponHandler = GetComponent<WeaponHandler>();
-            weaponHandler.setWeapon(0, charAnimator, "WeaponType_int");
+            weaponHandler.setWeapon(0, charAnimator);
         }
 
         void Update()
@@ -35,7 +41,7 @@ namespace Assets.Scripts
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                weaponHandler.setWeapon(weaponHandler.currentWeaponIdx + 1, charAnimator, "WeaponType_int");
+                weaponHandler.setWeapon(weaponHandler.currentWeaponIdx + 1, charAnimator);
             }
 
             if (focus != null)

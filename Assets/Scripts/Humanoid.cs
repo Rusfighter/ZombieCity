@@ -3,10 +3,15 @@
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public abstract class Humanoid : MonoBehaviour
+    public class Humanoid : MonoBehaviour
     {
         protected NavMeshAgent agent;
         public int health;
+
+        public virtual void Awake()
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
 
         public void GetHit(int damage)
         {

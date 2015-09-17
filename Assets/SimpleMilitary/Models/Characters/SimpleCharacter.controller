@@ -66,7 +66,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Weapons
     m_StateMachine: {fileID: 110775091}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 101100000, guid: f06f26f492c482e4983bd49862bf8264, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -4801,7 +4801,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Character_Auto_SingleShot
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110134579}
@@ -5377,7 +5377,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110285104}
-    m_Position: {x: 276, y: 60, z: 0}
+    m_Position: {x: 324, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

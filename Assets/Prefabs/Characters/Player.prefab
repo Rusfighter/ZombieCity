@@ -2023,16 +2023,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - obj: {fileID: 100024, guid: bc82026269b6eb248b9e0bccb54705a6, type: 2}
+  - obj: {fileID: 189030, guid: 3be9cb65f57089d4dbe0ea5d74acea21, type: 2}
     damage: 10
     range: 8
-    shootTime: .200000003
+    shootTime: .5
     animation: 2
-  - obj: {fileID: 100010, guid: bc82026269b6eb248b9e0bccb54705a6, type: 2}
+  - obj: {fileID: 149656, guid: 010bcbe2c3e82514ba8d58a0aace6af3, type: 2}
     damage: 50
     range: 8
     shootTime: .200000003
     animation: 8
+  - obj: {fileID: 128484, guid: e1dca0ae45c10014097adc07fcb0f509, type: 2}
+    damage: 50
+    range: 8
+    shootTime: .200000003
+    animation: 9
   weaponContainer: {fileID: 495372}
 --- !u!114 &11489094
 MonoBehaviour:

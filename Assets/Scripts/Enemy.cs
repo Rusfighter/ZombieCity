@@ -7,19 +7,22 @@ public class Enemy : Humanoid
     public Transform player;
     //private Animator charAnimator;
 
+    public override void Awake()
+    {
+        base.Awake();
+
+        //do stuff
+    }
+
     void Start()
     {
+        //agent = GetComponent<NavMeshAgent>();
         //charAnimator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(player.position);
-        /*if (nav.velocity.magnitude > 0.5f) {
-			charAnimator.SetFloat ("Forward", 0.6f);
-		}else
-			charAnimator.SetFloat ("Forward", 0);*/
     }
 }
