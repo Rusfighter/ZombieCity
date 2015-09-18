@@ -44,13 +44,7 @@ namespace Assets.Scripts
                 weaponHandler.setWeapon(weaponHandler.currentWeaponIdx + 1, charAnimator);
             }
 
-            if (focus != null)
-            {
-                Vector3 delta = -transform.position + focus.position;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(delta), 20 * Time.deltaTime);
-            }
-            else
-                agent.updateRotation = true;
+            LookAtEnemy();
 
             //normalize vectors
             Vector3 lookTo = transform.forward.normalized;
@@ -67,6 +61,21 @@ namespace Assets.Scripts
             charAnimator.SetFloat("Turn", Mathf.Cos(angle) * agent.velocity.magnitude / agent.speed);
         }
 
+        void LookAtEnemy()
+        {
+            if (focus != null && Vector3.Distance(transform.position, focus.position) <= weaponHandler.currentWeapon.range)
+            {
+                agent.updateRotation = false;
+                transform.LookAt(focus);
+                weaponHandler.StartShooting();
+            }
+            else
+            {
+                agent.updateRotation = true;
+                weaponHandler.StopShooting();
+            }
+        }
+
         void ClickAction(Vector3 position)
         {
             Ray ray = Camera.main.ScreenPointToRay(position);
@@ -75,10 +84,10 @@ namespace Assets.Scripts
             {
                 if (hit.collider.tag == "Enemy")
                 {
-                    Debug.Log("Enemy");
+                    if (focus != null) focus.localScale /= 1.3f;
                     focus = hit.collider.transform;
+                    focus.localScale *= 1.3f;
                     agent.ResetPath();
-                    agent.updateRotation = false;
                 }
                 else
                 {

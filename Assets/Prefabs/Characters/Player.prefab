@@ -2025,7 +2025,7 @@ MonoBehaviour:
   weapons:
   - obj: {fileID: 189030, guid: 3be9cb65f57089d4dbe0ea5d74acea21, type: 2}
     damage: 10
-    range: 8
+    range: 15
     shootTime: .5
     animation: 2
   - obj: {fileID: 149656, guid: 010bcbe2c3e82514ba8d58a0aace6af3, type: 2}
@@ -2033,6 +2033,11 @@ MonoBehaviour:
     range: 8
     shootTime: .200000003
     animation: 8
+  - obj: {fileID: 167754, guid: 03ce0d61bbf4110419f6a5f357d55b61, type: 2}
+    damage: 50
+    range: 8
+    shootTime: 1
+    animation: 5
   - obj: {fileID: 128484, guid: e1dca0ae45c10014097adc07fcb0f509, type: 2}
     damage: 50
     range: 8

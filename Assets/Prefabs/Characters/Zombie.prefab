@@ -414,7 +414,7 @@ GameObject:
   - 198: {fileID: 19856782}
   - 199: {fileID: 19924432}
   m_Layer: 0
-  m_Name: ParticleEmittor
+  m_Name: BloodEmittor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2652,7 +2652,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 142254}
   m_Enabled: 1
   m_Radius: .800000012
-  m_Speed: 0
+  m_Speed: 3
   m_Acceleration: Infinity
   avoidancePriority: 50
   m_AngularSpeed: Infinity

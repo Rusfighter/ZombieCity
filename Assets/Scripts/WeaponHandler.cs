@@ -19,19 +19,28 @@ public class WeaponHandler : MonoBehaviour {
 
     private bool shooting = false;
 
+    private IEnumerator shootCoroutine;
+
+    void Start()
+    {
+        shootCoroutine = Shoot();
+    }
+
     public void StartShooting()
     {
         if (shooting) return;
         shooting = true;
-        StartCoroutine(Shoot());
+        StartCoroutine(shootCoroutine);
+        Debug.Log("Start Shooting");
     }
 
     public void StopShooting()
     {
         if (!shooting) return;
         shooting = false;
-        StopCoroutine(Shoot());
+        StopCoroutine(shootCoroutine);
         StopEffects();
+        Debug.Log("Stop shooting");
     }
 
     private void StartEffects(Vector3 position = new Vector3())
@@ -46,7 +55,6 @@ public class WeaponHandler : MonoBehaviour {
         if (gunParticles != null) gunParticles.Play();
         if (gunLight != null) gunLight.enabled = true;
     }
-
     private void StopEffects()
     {
         if (emitter == null) return;
@@ -74,12 +82,11 @@ public class WeaponHandler : MonoBehaviour {
                         // implement some particle effect in Enemy.GetHit
                         enemy.GetHit(currentWeapon.damage, shootRay.direction);
                         StartEffects(shootHit.point);
+                        Invoke("StopEffects", 0.05f);
                     }
 
                 }/*else StartEffects(shootRay.origin + shootRay.direction * currentWeapon.range);*/
             }
-
-            Invoke("StopEffects", 0.05f);
 
             yield return new WaitForSeconds(currentWeapon.shootTime);
         }
@@ -90,8 +97,6 @@ public class WeaponHandler : MonoBehaviour {
     public void setWeapon(int index, Animator anim, string variable = "WeaponType_int")
     {
         if (index < 0 || index >= weapons.Length) return;
-
-        StopShooting();
 
         for (int i = 0; i < weaponContainer.childCount; i++)
         {
@@ -112,8 +117,5 @@ public class WeaponHandler : MonoBehaviour {
             gunLight = obj.GetComponentInChildren<Light>();
         }
         else { emitter = null; }
-
-
-        StartShooting();
     }
 }
