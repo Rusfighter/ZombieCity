@@ -5206,7 +5206,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Locomotion
-  m_Speed: 1
+  m_Speed: 1.20000005
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -5377,7 +5377,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110285104}
-    m_Position: {x: 324, y: 120, z: 0}
+    m_Position: {x: 312, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
