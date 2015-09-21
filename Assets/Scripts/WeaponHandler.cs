@@ -63,31 +63,32 @@ public class WeaponHandler : MonoBehaviour {
         if (gunLight != null) gunLight.enabled = false;
     }
 
+    public void SingleShot()
+    {
+        if (emitter != null)
+        {
+            shootRay.origin = emitter.transform.position;
+            shootRay.direction = emitter.forward;
+
+            if (Physics.Raycast(shootRay, out shootHit, currentWeapon.range))
+            {
+                Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.GetHit(currentWeapon.damage, shootRay.direction);
+                    StartEffects(shootHit.point);
+                    Invoke("StopEffects", 0.05f);
+                }
+
+            }
+        }
+    }
+
     private IEnumerator Shoot()
     {
         while (true)
         {
-            //calculate end line and see if it hits someone
-            if (emitter != null)
-            {
-                shootRay.origin = emitter.transform.position;
-                shootRay.direction = emitter.forward;
-
-                if (Physics.Raycast(shootRay, out shootHit, currentWeapon.range))
-                {
-                    Enemy enemy = shootHit.collider.GetComponent<Enemy>();
-
-                    if (enemy != null)
-                    {
-                        // implement some particle effect in Enemy.GetHit
-                        enemy.GetHit(currentWeapon.damage, shootRay.direction);
-                        StartEffects(shootHit.point);
-                        Invoke("StopEffects", 0.05f);
-                    }
-
-                }/*else StartEffects(shootRay.origin + shootRay.direction * currentWeapon.range);*/
-            }
-
+            SingleShot();
             yield return new WaitForSeconds(currentWeapon.shootTime);
         }
     }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Assets.Scripts
 {
@@ -12,12 +11,24 @@ namespace Assets.Scripts
 
         public int currentWeapon = 1;
 
+        public Transform Focus
+        {
+            set {
+                if (focus != null) focus.localScale /= 1.3f;
+                focus = value;
+                focus.localScale *= 1.3f;
+                agent.ResetPath();
+            }
+            get { return focus; }
+        }
+
         public override void Awake()
         {
             base.Awake();
 
             //do stuff
         }
+
 
         void Start()
         {
@@ -29,24 +40,12 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                ClickAction(Input.mousePosition);
-
-            }
-            else if (Input.touchCount > 0)
-            {
-                ClickAction(Input.GetTouch(0).position);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                weaponHandler.setWeapon(weaponHandler.currentWeaponIdx + 1, charAnimator);
-            }
-
             LookAtEnemy();
+            UpdateAnimation();
+        }
 
-            //normalize vectors
+        private void UpdateAnimation()
+        {
             Vector3 lookTo = transform.forward.normalized;
             lookTo.y = 0;
             Vector3 moveDirection = agent.velocity.normalized;
@@ -66,33 +65,14 @@ namespace Assets.Scripts
             if (focus != null && Vector3.Distance(transform.position, focus.position) <= weaponHandler.currentWeapon.range)
             {
                 agent.updateRotation = false;
-                transform.LookAt(focus);
+                Vector3 directionVec = focus.position - transform.position;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(directionVec), Time.deltaTime * agent.angularSpeed/60f);
                 weaponHandler.StartShooting();
             }
             else
             {
                 agent.updateRotation = true;
                 weaponHandler.StopShooting();
-            }
-        }
-
-        void ClickAction(Vector3 position)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(position);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                if (hit.collider.tag == "Enemy")
-                {
-                    if (focus != null) focus.localScale /= 1.3f;
-                    focus = hit.collider.transform;
-                    focus.localScale *= 1.3f;
-                    agent.ResetPath();
-                }
-                else
-                {
-                    agent.SetDestination(hit.point);
-                }
             }
         }
     }

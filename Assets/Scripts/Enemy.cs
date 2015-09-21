@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts;
+﻿using Assets.Scripts;
 using UnityEngine;
 
 public class Enemy : Humanoid
@@ -7,7 +6,7 @@ public class Enemy : Humanoid
     public Transform player;
     private ParticleSystem particles;
     private Transform particleTransform;
-    //private Animator charAnimator;
+    private Animator charAnimator;
 
     public override void Awake()
     {
@@ -20,7 +19,7 @@ public class Enemy : Humanoid
     void Start()
     {
         //agent = GetComponent<NavMeshAgent>();
-        //charAnimator = GetComponent<Animator>();
+        charAnimator = GetComponent<Animator>();
     }
 
     public void GetHit(int damage, Vector3 directionFrom)
