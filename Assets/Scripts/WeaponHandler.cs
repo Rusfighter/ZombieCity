@@ -31,7 +31,7 @@ public class WeaponHandler : MonoBehaviour {
         if (shooting) return;
         shooting = true;
         StartCoroutine(shootCoroutine);
-        Debug.Log("Start Shooting");
+        //Debug.Log("Start Shooting");
     }
 
     public void StopShooting()
@@ -40,7 +40,6 @@ public class WeaponHandler : MonoBehaviour {
         shooting = false;
         StopCoroutine(shootCoroutine);
         StopEffects();
-        Debug.Log("Stop shooting");
     }
 
     private void StartEffects(Vector3 position = new Vector3())

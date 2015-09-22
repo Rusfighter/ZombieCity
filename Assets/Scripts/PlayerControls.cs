@@ -13,6 +13,8 @@ namespace Assets.Scripts
 
         void Update()
         {
+            if (player.isDead) return;
+
             if (Input.GetMouseButtonDown(1))
             {
                 ClickAction(Input.mousePosition);
@@ -22,11 +24,6 @@ namespace Assets.Scripts
             {
                 ClickAction(Input.GetTouch(0).position);
             }
-
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                weaponHandler.setWeapon(weaponHandler.currentWeaponIdx + 1, charAnimator);
-            }*/
         }
 
         void ClickAction(Vector3 position)
