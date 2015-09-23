@@ -34,11 +34,8 @@ public class WeaponHandler : MonoBehaviour {
         if (index < 0) index = 0;
         setWeapon(index);
     }
-
-    //TODO create fix that is checking if already exist, maybe precreate all
     public void setWeapon(int index)
     {
-        Debug.Log("Set weapon:"+index);
         if (index < 0 || index >= weapons.Length || weaponIndex == index) return;
 
         weaponIndex = index;
@@ -53,8 +50,7 @@ public class WeaponHandler : MonoBehaviour {
         for (int i = 0; i < weaponContainer.childCount; i++)
         {
             GameObject child = weaponContainer.GetChild(i).gameObject;
-            if (child.name == weapons[index].name+"(Clone)")
-            {
+            if (child.name == weapons[index].name+"(Clone)"){
                 setWeapon(child);
                 return;
             }

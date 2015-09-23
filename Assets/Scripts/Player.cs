@@ -8,8 +8,6 @@ namespace Assets.Scripts
         private Animator charAnimator;
         private WeaponHandler weaponHandler;
 
-        private int currentWeapon = 1;
-
         private Transform focus;
         private Enemy focusSrc;
 
@@ -58,14 +56,8 @@ namespace Assets.Scripts
 
         void OnTriggerStay(Collider other)
         {
-            if (other.tag == "Enemy")
+            if (other.CompareTag("Enemy"))
                 GetHit(Time.deltaTime * 5);
-        }
-
-
-        void Start() {
-            charAnimator.SetInteger("WeaponType_int", currentWeapon+1);
-            weaponHandler.setWeapon(0);
         }
 
         void Update() {

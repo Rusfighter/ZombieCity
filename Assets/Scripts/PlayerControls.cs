@@ -14,6 +14,11 @@ namespace Assets.Scripts
             weaponHandler = GetComponent<WeaponHandler>();
         }
 
+        void Start()
+        {
+            weaponHandler.setWeapon(1);
+        }
+
         void Update()
         {
             if (player.isDead) return;
@@ -41,7 +46,7 @@ namespace Assets.Scripts
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (hit.collider.tag == "EnemyRayCast") player.Focus = hit.collider.transform.parent;
+                if (hit.collider.CompareTag("EnemyRayCast")) player.Focus = hit.collider.transform.parent;
                 else player.setDestination(hit.point);
             }
         }
