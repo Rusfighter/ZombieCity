@@ -29,6 +29,7 @@ GameObject:
   - 4: {fileID: 494276}
   - 33: {fileID: 3382444}
   - 23: {fileID: 2330144}
+  - 114: {fileID: 11404928}
   m_Layer: 0
   m_Name: Weapon_AssultRifle01
   m_TagString: Untagged
@@ -68,8 +69,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189030}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 5b86731bf9ef79c4da5245d379527a78, type: 2}
   m_SubsetIndices: 
@@ -124,6 +125,21 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11404928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114a771fbf4439948aec63842e009efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  range: 15
+  shootTime: .300000012
+  animationInt: 2
 --- !u!120 &12048666
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1290,6 +1306,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shootTime
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

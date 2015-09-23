@@ -1,121 +1,74 @@
 ﻿using Assets.Scripts;
-using System.Collections;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour {
 
-    public Weapon[] weapons;
-    public Transform weaponContainer; // hand
-    public int currentWeaponIdx { get; set; }
-    public Weapon currentWeapon { get; set; }
+    public GameObject[] weapons;
+    public Transform weaponContainer;
+    private int weaponIndex = -1;
 
-    private LineRenderer gunLine;
-    private ParticleSystem gunParticles;
-    private Light gunLight;
-    private Transform emitter;
+    private Animator charAnimator;
+    private string animatorString = "WeaponType_int";
 
-    private Ray shootRay;
-    private RaycastHit shootHit;
+    private Weapon weapon;
 
-    private bool shooting = false;
+    public Weapon Weapon { get { return weapon; } }
+    public int WeaponIndex { get { return weaponIndex; } }
 
-    private IEnumerator shootCoroutine;
 
-    void Start()
+    void Awake()
     {
-        shootCoroutine = Shoot();
+        charAnimator = transform.GetChild(0).GetComponent<Animator>();
     }
 
-    public void StartShooting()
+    public void nextWeapon()
     {
-        if (shooting) return;
-        shooting = true;
-        StartCoroutine(shootCoroutine);
-        //Debug.Log("Start Shooting");
+        int index = weaponIndex + 1;
+        if (index >= weapons.Length) index = 0;
+        setWeapon(index);
     }
 
-    public void StopShooting()
+    public void previousWeapon()
     {
-        if (!shooting) return;
-        shooting = false;
-        StopCoroutine(shootCoroutine);
-        StopEffects();
+        int index = weaponIndex - 1;
+        if (index < 0) index = 0;
+        setWeapon(index);
     }
 
-    private void StartEffects(Vector3 position = new Vector3())
+    //TODO create fix that is checking if already exist, maybe precreate all
+    public void setWeapon(int index)
     {
-        if (emitter == null) return;
-        if (gunLine != null && position.magnitude != 0)
+        Debug.Log("Set weapon:"+index);
+        if (index < 0 || index >= weapons.Length || weaponIndex == index) return;
+
+        weaponIndex = index;
+
+        if (weapon != null)
         {
-            gunLine.SetPosition(0, emitter.transform.position);
-            gunLine.enabled = true;
-            gunLine.SetPosition(1, position);
+            weapon.gameObject.SetActive(false);
         }
-        if (gunParticles != null) gunParticles.Play();
-        if (gunLight != null) gunLight.enabled = true;
-    }
-    private void StopEffects()
-    {
-        if (emitter == null) return;
-        if (gunLine != null) gunLine.enabled = false;
-        if (gunParticles != null) gunParticles.Stop();
-        if (gunLight != null) gunLight.enabled = false;
-    }
 
-    public void SingleShot()
-    {
-        if (emitter != null)
-        {
-            shootRay.origin = emitter.transform.position;
-            shootRay.direction = emitter.forward;
-
-            if (Physics.Raycast(shootRay, out shootHit, currentWeapon.range))
-            {
-                Enemy enemy = shootHit.collider.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.GetHit(currentWeapon.damage, shootRay.direction);
-                    StartEffects(shootHit.point);
-                    Invoke("StopEffects", 0.05f);
-                }
-
-            }
-        }
-    }
-
-    private IEnumerator Shoot()
-    {
-        while (true)
-        {
-            SingleShot();
-            yield return new WaitForSeconds(currentWeapon.shootTime);
-        }
-    }
-
-
-
-    public void setWeapon(int index, Animator anim, string variable = "WeaponType_int")
-    {
-        if (index < 0 || index >= weapons.Length) return;
+        Debug.Log(weaponContainer.childCount);
 
         for (int i = 0; i < weaponContainer.childCount; i++)
         {
-            Destroy(weaponContainer.GetChild(i).gameObject);
+            GameObject child = weaponContainer.GetChild(i).gameObject;
+            if (child.name == weapons[index].name+"(Clone)")
+            {
+                setWeapon(child);
+                return;
+            }
         }
-        GameObject obj = Instantiate(weapons[index].obj);
+
+        setWeapon(Instantiate(weapons[index]));
+    }
+
+    private void setWeapon(GameObject obj)
+    {
+
         obj.transform.SetParent(weaponContainer, false);
-
-        anim.SetInteger(variable, weapons[index].animation);
-        currentWeaponIdx = index;
-        currentWeapon = weapons[index];
-
-        if (obj.transform.childCount > 0)
-        {
-            emitter = obj.transform.GetChild(0);
-            gunLine = obj.GetComponentInChildren<LineRenderer>();
-            gunParticles = obj.GetComponentInChildren<ParticleSystem>();
-            gunLight = obj.GetComponentInChildren<Light>();
-        }
-        else { emitter = null; }
+        weapon = obj.GetComponent<Weapon>();
+        charAnimator.SetInteger(animatorString, weapon.animationInt);
+        obj.SetActive(true);
     }
 }

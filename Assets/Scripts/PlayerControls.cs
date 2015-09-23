@@ -5,10 +5,13 @@ namespace Assets.Scripts
     class PlayerControls : MonoBehaviour
     {
         Player player;
+        WeaponHandler weaponHandler;
 
-        void Start()
+
+        void Awake()
         {
             player = GetComponent<Player>();
+            weaponHandler = GetComponent<WeaponHandler>();
         }
 
         void Update()
@@ -24,6 +27,12 @@ namespace Assets.Scripts
             {
                 ClickAction(Input.GetTouch(0).position);
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                
+                weaponHandler.nextWeapon();
+            }
         }
 
         void ClickAction(Vector3 position)
@@ -32,7 +41,7 @@ namespace Assets.Scripts
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (hit.collider.tag == "Enemy") player.Focus = hit.collider.transform;
+                if (hit.collider.tag == "EnemyRayCast") player.Focus = hit.collider.transform.parent;
                 else player.setDestination(hit.point);
             }
         }

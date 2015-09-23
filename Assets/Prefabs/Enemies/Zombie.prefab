@@ -381,7 +381,7 @@ GameObject:
   - 195: {fileID: 19591250}
   - 114: {fileID: 11490738}
   - 136: {fileID: 13665966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -635,6 +635,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &163282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 471234}
+  - 135: {fileID: 13571432}
+  m_Layer: 0
+  m_Name: ZombieRayCast
+  m_TagString: EnemyRayCast
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &166502
 GameObject:
   m_ObjectHideFlags: 1
@@ -965,11 +981,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.9698257, y: .5, z: -4.25892353}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484106}
   - {fileID: 424406}
+  - {fileID: 471234}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &411972
@@ -1442,6 +1459,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433160}
   m_RootOrder: 14
+--- !u!4 &471234
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 410740}
+  m_RootOrder: 2
 --- !u!4 &472500
 Transform:
   m_ObjectHideFlags: 1
@@ -2615,7 +2644,10 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
+    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
+    on those transforms.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform
+    'Hat_jnt'\n\tFrom animation clip 'Dead_01'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11490738
@@ -2631,6 +2663,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 100
   DamagePersecond: 1
+--- !u!135 &13571432
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 1.28999996, z: 0}
 --- !u!136 &13665966
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2640,8 +2684,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 2.75
+  m_Radius: .899999976
+  m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.55999994, z: 0}
 --- !u!195 &19591250
@@ -3761,6 +3805,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: baseHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: EnemyRayCast
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

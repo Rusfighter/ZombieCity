@@ -14,7 +14,6 @@ public class Enemy : Humanoid
     private Transform playerTransform;
 
     private Player focussedBy = null; // player who is focussing this zombie
-
     private bool isEating = false;
 
     public Player Player {
