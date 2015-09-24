@@ -12,9 +12,12 @@ public class Enemy : Humanoid
 
     private Player player;
     private Transform playerTransform;
+    private Vector3 targetPos;
 
     private Player focussedBy = null; // player who is focussing this zombie
     private bool isEating = false;
+
+
 
     public Player Player {
         set {
@@ -73,12 +76,17 @@ public class Enemy : Humanoid
     {
         if (player == null) return;
 
-        setDestination(playerTransform.position);
+        targetPos = playerTransform.position;
+        if (Time.frameCount % 10 == 0) // set destination every x frames
+            setDestination(targetPos);
 
-        if (Vector3.Distance(playerTransform.position, transform.position) < 2f && player.isDead && !isEating)
+        if (!isEating && player.isDead)
         {
-            isEating = true;
-            charAnimator.SetBool("isEating", true);
+            if (Vector3.Distance(targetPos, transform.position) < 1.8f)
+            {
+                isEating = true;
+                charAnimator.SetBool("isEating", true);
+            }
         }
     }
 }

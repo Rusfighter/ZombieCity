@@ -66,5 +66,6 @@ public class WeaponHandler : MonoBehaviour {
         weapon = obj.GetComponent<Weapon>();
         charAnimator.SetInteger(animatorString, weapon.animationInt);
         obj.SetActive(true);
+        weapon.StartAutoShoot();
     }
 }

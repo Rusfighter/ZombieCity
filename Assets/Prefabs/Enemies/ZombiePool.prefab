@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455966}
-  - 114: {fileID: 11462010}
   - 114: {fileID: 11486366}
   m_Layer: 0
   m_Name: ZombiePool
@@ -29,20 +28,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11462010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee7dee09da62db42a8ce5435c4c142d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObject: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
-  pooledAmount: 8
-  ableToGrow: 0
 --- !u!114 &11486366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,9 +39,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4566b9b52feff3840a471593521b162c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pooledObject: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
+  pooledAmount: 120
+  ableToGrow: 0
   player: {fileID: 0}
-  minSpawn: 2
-  maxSpawn: 4
+  minSpawn: 0
+  maxSpawn: .100000001
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

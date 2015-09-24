@@ -34,6 +34,7 @@ namespace Assets.Scripts
             charAnimator = transform.GetChild(0).GetComponent<Animator>();
             weaponHandler = GetComponent<WeaponHandler>();
             focusEffect = transform.FindChild("FocusEffect");
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
 
         public override void GetHit(float damage) {

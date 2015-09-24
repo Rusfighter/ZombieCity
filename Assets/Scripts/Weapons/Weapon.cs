@@ -66,7 +66,7 @@ namespace Assets.Scripts
                 if (Physics.Raycast(shootRay, out shootHit, range + emitter.forward.magnitude, shootAbleMask)){
                     if (shootHit.collider.CompareTag("Enemy"))
                     {
-                        Enemy enemy = (Enemy)shootHit.collider.GetComponent(typeof(Enemy));
+                        Enemy enemy = shootHit.collider.GetComponent<Enemy>();
                         enemy.GetHit(damage, shootRay.direction);
                         StartEffects(shootHit.point);
                         Invoke("StopEffects", 0.05f);

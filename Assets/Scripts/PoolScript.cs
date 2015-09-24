@@ -9,7 +9,7 @@ namespace Assets.Scripts
         public int pooledAmount;
         public bool ableToGrow = true;
 
-        List<GameObject> pooledObjects;
+        protected List<GameObject> pooledObjects;
 
         void Awake() {
             pooledObjects = new List<GameObject>();
