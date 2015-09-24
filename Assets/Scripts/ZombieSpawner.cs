@@ -20,9 +20,9 @@ namespace Assets.Scripts
             GameObject zombie = getPooledObj();
             if (zombie != null)
             {
-                zombie.SetActive(true);
                 zombie.transform.position = transform.position;
                 zombie.transform.rotation = transform.rotation;
+                zombie.SetActive(true);
                 zombie.GetComponent<Enemy>().Player = player;
             }
 
