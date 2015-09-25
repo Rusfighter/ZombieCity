@@ -35,6 +35,7 @@ namespace Assets.Scripts
             weaponHandler = GetComponent<WeaponHandler>();
             focusEffect = transform.FindChild("FocusEffect");
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            Application.targetFrameRate = 60;
         }
 
         public override void GetHit(float damage) {
