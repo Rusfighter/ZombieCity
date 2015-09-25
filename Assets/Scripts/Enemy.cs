@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class Enemy : Humanoid
 {
-    public int DamagePersecond = 1;
+    public float StopDistance = 30;
     private ParticleSystem particles;
     private Transform particleTransform;
     private Animator charAnimator;
@@ -19,18 +19,20 @@ public class Enemy : Humanoid
 
 
 
-    public Player Player {
+    public Player Target {
         set {
                 player = value;
                 playerTransform = player.transform;
                 isEating = false;
-                charAnimator.SetBool("isEating", false);
+                if (charAnimator != null) charAnimator.SetBool("isEating", false);
+
+                setDestination(playerTransform.position);
             }
     }
 
     void OnEnable()
     {
-        charAnimator.SetBool("isDead", false);
+        if (charAnimator != null) charAnimator.SetBool("isDead", false);
         capsuleCollider.enabled = true;
         Agent.enabled = true;
         health = baseHealth;
@@ -48,7 +50,7 @@ public class Enemy : Humanoid
     public override void onDeath()
     {
         base.onDeath();
-        charAnimator.SetBool("isDead", true);
+        if (charAnimator != null) charAnimator.SetBool("isDead", true);
         capsuleCollider.enabled = false;
         Agent.enabled = false;
         transform.DOMove(transform.position - transform.up * 1f, 2f).SetDelay(1.5f).OnComplete(()=> {
@@ -72,21 +74,40 @@ public class Enemy : Humanoid
         focussedBy = player;
     }
 
-    void Update()
+    void SlowUpdate()
     {
         if (player == null) return;
 
         targetPos = playerTransform.position;
-        if (Time.frameCount % 10 == 0) // set destination every x frames
+        float dinstanceToPlayer = Vector3.Distance(targetPos, transform.position);
+
+        if (dinstanceToPlayer > StopDistance)
+        {
+            Agent.enabled = false;
+            charAnimator.enabled = false;
+        }
+        else if (!Agent.enabled && !charAnimator.enabled)
+        {
+            Agent.enabled = true;
+            charAnimator.enabled = true;
+        }
+
+        if (Agent.enabled) // set destination every x frames
             setDestination(targetPos);
 
         if (!isEating && player.isDead)
         {
-            if (Vector3.Distance(targetPos, transform.position) < 1.8f)
+            if (dinstanceToPlayer < 1.8f)
             {
                 isEating = true;
-                charAnimator.SetBool("isEating", true);
+                if (charAnimator != null) charAnimator.SetBool("isEating", true);
             }
         }
+    }
+
+    void Update()
+    {
+        if (Time.frameCount % 3 == 0)
+            SlowUpdate();
     }
 }

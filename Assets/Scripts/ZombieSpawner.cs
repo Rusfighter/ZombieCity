@@ -23,7 +23,7 @@ namespace Assets.Scripts
                 zombie.transform.position = transform.position;
                 zombie.transform.rotation = transform.rotation;
                 zombie.SetActive(true);
-                zombie.GetComponent<Enemy>().Player = player;
+                zombie.GetComponent<Enemy>().Target = player;
             }
 
             Invoke("Spawn", Random.Range(minSpawn, maxSpawn));
