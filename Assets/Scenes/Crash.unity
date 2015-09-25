@@ -29992,7 +29992,7 @@ Prefab:
       objectReference: {fileID: 1199395012}
     - target: {fileID: 11486366, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
       propertyPath: pooledAmount
-      value: 150
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 11486366, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
       propertyPath: ableToGrow
