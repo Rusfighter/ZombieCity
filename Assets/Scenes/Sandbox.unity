@@ -273,7 +273,7 @@ Prefab:
       objectReference: {fileID: 1650056955}
     - target: {fileID: 11486366, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
       propertyPath: pooledAmount
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}

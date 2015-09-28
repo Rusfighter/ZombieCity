@@ -74,7 +74,7 @@ public class Enemy : Humanoid
         focussedBy = player;
     }
 
-    void SlowUpdate()
+    public void SlowUpdate()
     {
         if (player == null) return;
 
@@ -105,9 +105,9 @@ public class Enemy : Humanoid
         }
     }
 
-    void Update()
+    /*void Update()
     {
         if (Time.frameCount % 3 == 0)
             SlowUpdate();
-    }
+    }*/
 }

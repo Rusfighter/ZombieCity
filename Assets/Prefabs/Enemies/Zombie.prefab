@@ -2662,7 +2662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10000
-  StopDistance: 25
+  StopDistance: 100
 --- !u!135 &13571432
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2701,8 +2701,8 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: Infinity
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2.75
   m_BaseOffset: 0
@@ -3800,7 +3800,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AutoBraking
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: baseHealth
@@ -3844,7 +3844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AutoTraverseOffMeshLink
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
@@ -3872,7 +3872,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: StopDistance
-      value: 25
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
