@@ -388,7 +388,7 @@ GameObject:
   - 114: {fileID: 365458134}
   - 114: {fileID: 365458133}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI-menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -480,7 +480,7 @@ GameObject:
   - 222: {fileID: 515161118}
   - 114: {fileID: 515161117}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
