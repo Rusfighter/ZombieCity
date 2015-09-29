@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.34000015, y: 0, z: 1.42999995}
+  m_LocalPosition: {x: -15.8999996, y: 0, z: 1.42999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,11 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
-  pooledAmount: 150
+  pooledAmount: 200
   ableToGrow: 0
   player: {fileID: 0}
-  minSpawn: .0199999996
-  maxSpawn: .100000001
+  minSpawn: .00999999978
+  maxSpawn: .0500000007
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

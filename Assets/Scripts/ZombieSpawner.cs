@@ -31,7 +31,7 @@ namespace Assets.Scripts
 
         void Update()
         {
-            float divider = 5;
+            float divider = 20;
             int remainder = Time.frameCount % (int)divider;
             int totalObjects = pooledObjects.Count;
             int from = (int)Mathf.Lerp(0, totalObjects, remainder / divider);

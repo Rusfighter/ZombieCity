@@ -7,7 +7,6 @@ public class Enemy : Humanoid
     public float StopDistance = 30;
     private ParticleSystem particles;
     private Transform particleTransform;
-    private Animator charAnimator;
     private CapsuleCollider capsuleCollider;
 
     private Player player;
@@ -17,6 +16,9 @@ public class Enemy : Humanoid
     private Player focussedBy = null; // player who is focussing this zombie
     private bool isEating = false;
 
+    private Animation anim;
+
+    private FastPathFinding fastPath;
 
 
     public Player Target {
@@ -24,7 +26,6 @@ public class Enemy : Humanoid
                 player = value;
                 playerTransform = player.transform;
                 isEating = false;
-                if (charAnimator != null) charAnimator.SetBool("isEating", false);
 
                 setDestination(playerTransform.position);
             }
@@ -32,25 +33,28 @@ public class Enemy : Humanoid
 
     void OnEnable()
     {
-        if (charAnimator != null) charAnimator.SetBool("isDead", false);
         capsuleCollider.enabled = true;
         Agent.enabled = true;
         health = baseHealth;
+        anim.Play("Zombie_Walk");
+        anim["Zombie_Walk"].speed = 2.5f;
     }
 
     public override void Awake()
     {
         base.Awake();
         particles = GetComponentInChildren<ParticleSystem>();
-        charAnimator = GetComponentInChildren<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         if (particles != null) particleTransform = particles.gameObject.transform;
+
+        anim = GetComponentInChildren<Animation>();
+        fastPath = GetComponent<FastPathFinding>();
+        fastPath.speed = Agent.speed;
     }
 
     public override void onDeath()
     {
         base.onDeath();
-        if (charAnimator != null) charAnimator.SetBool("isDead", true);
         capsuleCollider.enabled = false;
         Agent.enabled = false;
         transform.DOMove(transform.position - transform.up * 1f, 2f).SetDelay(1.5f).OnComplete(()=> {
@@ -83,14 +87,11 @@ public class Enemy : Humanoid
 
         if (dinstanceToPlayer > StopDistance)
         {
+            setItemsOffscreen(false);
             Agent.enabled = false;
-            charAnimator.enabled = false;
+            fastPath.CalculatePath(playerTransform);
         }
-        else if (!Agent.enabled && !charAnimator.enabled)
-        {
-            Agent.enabled = true;
-            charAnimator.enabled = true;
-        }
+        else setItemsOffscreen(true);
 
         if (Agent.enabled) // set destination every x frames
             setDestination(targetPos);
@@ -100,14 +101,20 @@ public class Enemy : Humanoid
             if (dinstanceToPlayer < 1.8f)
             {
                 isEating = true;
-                if (charAnimator != null) charAnimator.SetBool("isEating", true);
             }
         }
     }
 
-    /*void Update()
+    void setItemsOffscreen(bool active)
     {
-        if (Time.frameCount % 3 == 0)
-            SlowUpdate();
-    }*/
+        if (Agent.enabled == active) return;
+
+        GetComponent<CapsuleCollider>().enabled = active;
+        Agent.enabled = active;
+
+        for (int i=0; i<transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(active);
+        }
+    }
 }
