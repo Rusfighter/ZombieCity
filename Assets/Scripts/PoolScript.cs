@@ -45,7 +45,7 @@ namespace Assets.Scripts
 
         private GameObject createObject()
         {
-            GameObject obj = (GameObject)Instantiate(pooledObject);
+            GameObject obj = Instantiate(pooledObject);
             obj.transform.SetParent(transform);
             obj.SetActive(false);
             return obj;

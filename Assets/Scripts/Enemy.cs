@@ -26,18 +26,16 @@ public class Enemy : Humanoid
                 player = value;
                 playerTransform = player.transform;
                 isEating = false;
-
-                setDestination(playerTransform.position);
             }
     }
 
     void OnEnable()
     {
-        capsuleCollider.enabled = true;
-        Agent.enabled = true;
         health = baseHealth;
         anim.Play("Zombie_Walk");
         anim["Zombie_Walk"].speed = 2.5f;
+
+        setItemsOffscreen(false);
     }
 
     public override void Awake()
@@ -88,7 +86,6 @@ public class Enemy : Humanoid
         if (dinstanceToPlayer > StopDistance)
         {
             setItemsOffscreen(false);
-            Agent.enabled = false;
             fastPath.CalculatePath(playerTransform);
         }
         else setItemsOffscreen(true);
