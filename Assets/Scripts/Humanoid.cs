@@ -38,5 +38,8 @@ namespace Assets.Scripts
             if (isDead) return;
             agent.SetDestination(position);
         }
+		public float Health {
+			get { return health; }
+		}
     }
 }
