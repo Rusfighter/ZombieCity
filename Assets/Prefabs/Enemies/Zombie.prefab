@@ -339,6 +339,7 @@ GameObject:
   - 195: {fileID: 19591250}
   - 114: {fileID: 11490738}
   - 136: {fileID: 13665966}
+  - 114: {fileID: 11450518}
   m_Layer: 10
   m_Name: Zombie
   m_TagString: Enemy
@@ -546,7 +547,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469026}
-  - 95: {fileID: 9561786}
+  - 111: {fileID: 11112008}
   m_Layer: 0
   m_Name: SimpleZombies_Nazi_Blue
   m_TagString: Untagged
@@ -2630,26 +2631,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120702}
   m_Mesh: {fileID: 4300014, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
---- !u!95 &9561786
-Animator:
-  serializedVersion: 3
+--- !u!111 &11112008
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161110}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92c93b80307cf90438fcfadd52eab10c, type: 2}
-  m_CullingMode: 2
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some transforms are animated by both a Humanoid
-    animation clip and a Generic animation clip. Only the Humanoid clip will be applied
-    on those transforms.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform
-    'Hat_jnt'\n\tFrom animation clip 'Dead_01'"
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400002, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
+  m_Animations:
+  - {fileID: 7400002, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
+  - {fileID: 7400006, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 1
+--- !u!114 &11450518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6367886c30e1c44468454b115321b3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!114 &11490738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2662,7 +2671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10000
-  StopDistance: 25
+  StopDistance: 5
 --- !u!135 &13571432
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2694,16 +2703,16 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: .800000012
-  m_Speed: 3
+  m_Speed: 1
   m_Acceleration: Infinity
   avoidancePriority: 50
   m_AngularSpeed: Infinity
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
+  m_AutoRepath: 0
   m_Height: 2.75
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
@@ -3800,7 +3809,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AutoBraking
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: baseHealth
@@ -3840,11 +3849,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AutoRepath
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_AutoTraverseOffMeshLink
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
@@ -3872,7 +3881,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: StopDistance
-      value: 25
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -28,5 +28,22 @@ namespace Assets.Scripts
 
             Invoke("Spawn", Random.Range(minSpawn, maxSpawn));
         }
+
+        void Update()
+        {
+            float divider = 20;
+            int remainder = Time.frameCount % (int)divider;
+            int totalObjects = pooledObjects.Count;
+            int from = (int)Mathf.Lerp(0, totalObjects, remainder / divider);
+            int to = (int)Mathf.Lerp(0, totalObjects, (1 + remainder) / divider);
+            for (int i = from; i<to; i++)
+            {
+                GameObject obj = pooledObjects[i];
+                if (obj.activeInHierarchy)
+                {
+                    obj.GetComponent<Enemy>().SlowUpdate();
+                }
+            }
+        }
     }
 }
