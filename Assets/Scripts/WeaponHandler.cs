@@ -58,12 +58,20 @@ public class WeaponHandler : MonoBehaviour {
 
         setWeapon(Instantiate(weapons[index]));
     }
+	public void reload (bool reloading) {
+		if (reloading) {
+			charAnimator.SetBool ("Reload_b", true);
+		} else {
+			charAnimator.SetBool ("Reload_b", false);
+		}
+
+	}
 
     private void setWeapon(GameObject obj)
     {
-
         obj.transform.SetParent(weaponContainer, false);
         weapon = obj.GetComponent<Weapon>();
+		weapon.weaponHandler = this;
         charAnimator.SetInteger(animatorString, weapon.animationInt);
         obj.SetActive(true);
         weapon.StartAutoShoot();
