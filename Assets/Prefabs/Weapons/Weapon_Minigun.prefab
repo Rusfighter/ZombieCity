@@ -168,6 +168,9 @@ MonoBehaviour:
   range: 20
   shootTime: .100000001
   animationInt: 9
+  clipSize: 200
+  reloadTime: 2
+  weaponAnimator: {fileID: 0}
 --- !u!120 &12045090
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1322,6 +1325,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clipSize
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

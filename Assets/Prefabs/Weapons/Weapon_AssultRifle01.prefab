@@ -105,8 +105,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   range: 15
-  shootTime: .5
+  shootTime: 1.5
   animationInt: 2
+  clipSize: 10
+  reloadTime: 1.5
+  weaponAnimator: {fileID: 0}
 --- !u!120 &12048666
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1280,7 +1283,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: shootTime
-      value: .5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: range
@@ -1297,6 +1300,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Range
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clipSize
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

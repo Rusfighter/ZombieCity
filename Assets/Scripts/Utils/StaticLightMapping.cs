@@ -25,35 +25,48 @@ public class StaticLightMapping : MonoBehaviour {
             Vector3[] vertices = meshes[i].sharedMesh.vertices;
             bool found = false;
 
-            for (int y = 0; y<vertices.Length && !found; y++)
+            for (int y = 0; y<vertices.Length-2 && !found; y++)
             {
-                Vector3 vertice = obj.transform.TransformPoint(vertices[y]);
-                for (int z = 0; z < lights.Length; z++)
+                Vector3 vertice1 = vertices[y];
+                Vector3 vertice2 = vertices[y+1];
+                Vector3 vertice3 = vertices[y+2];
+                for (int v = 0; v <= 6; v++)
                 {
-                    Light light = lights[z];
-                    if (!light.enabled) continue;
-                    Transform lightTransform = light.transform;
+                    Vector3 vertice;
+                    if (v <= 3) vertice = vertice1 + (vertice2 - vertice1) * v/3f;
+                    else vertice = vertice1 + (vertice3 - vertice1) * (v-3) / 3f;
 
-                    if (light.type == LightType.Point)
+                    vertice = obj.transform.TransformPoint(vertice);
+                    for (int z = 0; z < lights.Length; z++)
                     {
-                        if (Vector3.Distance(lightTransform.position, vertice) < light.range)
+                        Light light = lights[z];
+                        if (!light.enabled) continue;
+                        Transform lightTransform = light.transform;
+
+                        if (light.type == LightType.Point)
                         {
-                            found = true;
-                            flags = flags | StaticEditorFlags.LightmapStatic;
-                            finalShader = lightMapShader;
-                            break;
+                            if (Vector3.Distance(lightTransform.position, vertice) < light.range)
+                            {
+                                found = true;
+                                flags = flags | StaticEditorFlags.LightmapStatic;
+                                finalShader = lightMapShader;
+                                break;
+                            }
                         }
-                    }else if (light.type == LightType.Spot) {
-                        if (InsideCone(lightTransform, vertice, light.range, light.spotAngle))
+                        else if (light.type == LightType.Spot)
                         {
-                            found = true;
-                            flags = flags | StaticEditorFlags.LightmapStatic;
-                            finalShader = lightMapShader;
-                            break;
+                            if (InsideCone(lightTransform, vertice, light.range, light.spotAngle))
+                            {
+                                found = true;
+                                flags = flags | StaticEditorFlags.LightmapStatic;
+                                finalShader = lightMapShader;
+                                break;
+                            }
                         }
                     }
                 }
             }
+
             if (setShader) obj.GetComponent<Renderer>().sharedMaterial.shader = finalShader;
             GameObjectUtility.SetStaticEditorFlags(obj, flags);
 

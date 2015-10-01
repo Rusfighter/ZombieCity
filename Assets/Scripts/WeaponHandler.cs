@@ -8,7 +8,6 @@ public class WeaponHandler : MonoBehaviour {
     private int weaponIndex = -1;
 
     private Animator charAnimator;
-    private string animatorString = "WeaponType_int";
 
     private Weapon weapon;
 
@@ -18,7 +17,7 @@ public class WeaponHandler : MonoBehaviour {
 
     void Awake()
     {
-        charAnimator = transform.GetChild(0).GetComponent<Animator>();
+        charAnimator = transform.GetComponentInChildren<Animator>();
     }
 
     public void nextWeapon()
@@ -40,13 +39,6 @@ public class WeaponHandler : MonoBehaviour {
 
         weaponIndex = index;
 
-        if (weapon != null)
-        {
-            weapon.gameObject.SetActive(false);
-        }
-
-        Debug.Log(weaponContainer.childCount);
-
         for (int i = 0; i < weaponContainer.childCount; i++)
         {
             GameObject child = weaponContainer.GetChild(i).gameObject;
@@ -58,22 +50,21 @@ public class WeaponHandler : MonoBehaviour {
 
         setWeapon(Instantiate(weapons[index]));
     }
-	public void reload (bool reloading) {
-		if (reloading) {
-			charAnimator.SetBool ("Reload_b", true);
-		} else {
-			charAnimator.SetBool ("Reload_b", false);
-		}
 
-	}
+	public void ReloadWeapon () {
+        weapon.Reload();
+    }
 
     private void setWeapon(GameObject obj)
     {
+        if (weapon != null) {
+            weapon.Disable();
+            weapon.gameObject.SetActive(false);
+        }
+
         obj.transform.SetParent(weaponContainer, false);
-        weapon = obj.GetComponent<Weapon>();
-		weapon.weaponHandler = this;
-        charAnimator.SetInteger(animatorString, weapon.animationInt);
         obj.SetActive(true);
-        weapon.StartAutoShoot();
+        weapon = obj.GetComponent<Weapon>();
+        weapon.Init(charAnimator);
     }
 }

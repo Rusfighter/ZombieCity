@@ -2671,7 +2671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10000
-  StopDistance: 25
+  StopDistance: 30
 --- !u!135 &13571432
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3881,7 +3881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: StopDistance
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Speed

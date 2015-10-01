@@ -4,6 +4,8 @@
 public class MeshMerger : MonoBehaviour
 {
     public MeshFilter[] meshFilters;
+    MeshFilter meshFilter;
+    Mesh finalMesh;
     public Material material;
 
     //----------------------------------------------------------------------------
@@ -40,68 +42,96 @@ public class MeshMerger : MonoBehaviour
         // allocate arrays
         Vector3[] verts = new Vector3[vertCount];
         Vector3[] norms = new Vector3[normCount];
-        Transform[] aBones = new Transform[meshFilters.Length];
-        Matrix4x4[] bindPoses = new Matrix4x4[meshFilters.Length];
-        BoneWeight[] weights = new BoneWeight[vertCount];
         int[] tris = new int[triCount];
         Vector2[] uvs = new Vector2[uvCount];
-
         int vertOffset = 0;
         int normOffset = 0;
         int triOffset = 0;
         int uvOffset = 0;
-        int meshOffset = 0;
 
-        // merge the meshes and set up bones
+        meshFilter = gameObject.AddComponent<MeshFilter>();
+        gameObject.AddComponent<MeshRenderer>();
+
         foreach (MeshFilter mf in meshFilters)
         {
-            foreach (int i in mf.mesh.triangles)
-                tris[triOffset++] = i + vertOffset;
+            Mesh m = mf.mesh;
 
-            aBones[meshOffset] = mf.transform;
-            bindPoses[meshOffset] = Matrix4x4.identity;
-
-            foreach (Vector3 v in mf.mesh.vertices)
+            foreach (int i in m.triangles)
             {
-                weights[vertOffset].weight0 = 1.0f;
-                weights[vertOffset].boneIndex0 = meshOffset;
-                verts[vertOffset++] = v;
+                tris[triOffset++] = i + vertOffset;
             }
 
-            foreach (Vector3 n in mf.mesh.normals)
-                norms[normOffset++] = n;
+            foreach (Vector3 lv in m.vertices)
+            {
+                Vector3 vert = mf.transform.TransformPoint(lv);
+                verts[vertOffset++] = meshFilter.transform.InverseTransformPoint(vert);
+            }
 
-            foreach (Vector2 uv in mf.mesh.uv)
-                uvs[uvOffset++] = uv;
+            foreach (Vector3 lv in m.normals)
+            {
+                Vector3 normal = mf.transform.TransformDirection(lv);
+                norms[normOffset++] = meshFilter.transform.InverseTransformPoint(normal);
+            }
 
-            meshOffset++;
+            foreach (Vector3 v in m.uv)
+            {
+                uvs[uvOffset++] = new Vector2(v.x, v.y);
+            }
 
-            MeshRenderer mr =
-              mf.gameObject.GetComponent(typeof(MeshRenderer))
-              as MeshRenderer;
-
-            if (mr)
-                mr.enabled = false;
+            MeshRenderer mr = mf.gameObject.GetComponent<MeshRenderer>();
+            if (mr) mr.enabled = false;
         }
 
-        // hook up the mesh
-        Mesh me = new Mesh();
-        me.name = gameObject.name;
-        me.vertices = verts;
-        me.normals = norms;
-        me.boneWeights = weights;
-        me.uv = uvs;
-        me.triangles = tris;
-        me.bindposes = bindPoses;
+        finalMesh = new Mesh();
+        finalMesh.name = gameObject.name;
+        finalMesh.vertices = verts;
+        finalMesh.normals = norms;
+        finalMesh.uv = uvs;
+        finalMesh.triangles = tris;
 
-        // hook up the mesh renderer        
-        SkinnedMeshRenderer smr =
-          gameObject.AddComponent(typeof(SkinnedMeshRenderer))
-          as SkinnedMeshRenderer;
+        meshFilter.mesh = finalMesh;
 
-        smr.sharedMesh = me;
-        smr.bones = aBones;
         GetComponent<Renderer>().material = material;
+    }
 
+    void Update()
+    {
+        SetVerticesAndNormals();
+    }
+
+    void SetVerticesAndNormals()
+    {
+
+        Vector3[] verts = finalMesh.vertices;
+        Vector3[] norms = finalMesh.normals;
+        int[] tris = finalMesh.triangles;
+        int vertOffset = 0;
+        int normOffset = 0;
+        int triOffset = 0;
+
+        foreach (MeshFilter mf in meshFilters)
+        {
+            Mesh m = mf.mesh;
+
+            foreach (int i in m.triangles)
+            {
+                tris[triOffset++] = i + vertOffset;
+            }
+
+            foreach (Vector3 lv in m.vertices)
+            {
+                Vector3 vert = mf.transform.TransformPoint(lv);
+                verts[vertOffset++] = meshFilter.transform.InverseTransformPoint(vert);
+            }
+
+            foreach (Vector3 lv in m.normals)
+            {
+                Vector3 normal = mf.transform.TransformDirection(lv);
+                norms[normOffset++] = meshFilter.transform.InverseTransformDirection(normal);
+            }
+        }
+
+        finalMesh.vertices = verts;
+        finalMesh.normals = norms;
     }
 }

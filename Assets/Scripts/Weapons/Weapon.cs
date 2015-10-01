@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 namespace Assets.Scripts
 {
@@ -9,7 +10,7 @@ namespace Assets.Scripts
         public float shootTime = 0.1f;
         public int animationInt = 1;
 		public int clipSize = 30;
-		public int reloadTime = 2;
+		public float reloadTime = 2;
 		private int ammoInClip; 
 
         protected bool isAutoShooting = false;
@@ -20,15 +21,26 @@ namespace Assets.Scripts
         private Light gunLight;
         private Transform emitter;
 
-		public WeaponHandler weaponHandler;
-
         private Ray shootRay;
         private RaycastHit shootHit;
 
-        private IEnumerator shootCoroutine;
-		private IEnumerator reloadCoroutine;
-
         private int shootAbleMask;
+
+        public Animator weaponAnimator; // use this only for reload or shoot effects
+        private string reloadString = "Reload_b";
+        private string animatorString = "WeaponType_int";
+
+        private float timeToNextEvent = 0;
+
+        public void Init(Animator weaponAnimator)
+        {
+            this.weaponAnimator = weaponAnimator;
+            isReloading = false;
+            isAutoShooting = false;
+            timeToNextEvent = 0;
+            weaponAnimator.SetInteger(animatorString, animationInt);
+            weaponAnimator.SetBool(reloadString, isReloading);
+        }
 
         public virtual void Awake(){
 
@@ -38,70 +50,70 @@ namespace Assets.Scripts
             gunLight = GetComponentInChildren<Light>();
             shootAbleMask = LayerMask.GetMask("ShootAble");
 
-			reloadCoroutine = ReloadRoutine();
-            shootCoroutine = ShootRoutine();
-
-			ammoInClip = clipSize;
+            ammoInClip = clipSize;
         }
-		private IEnumerator ReloadRoutine() {
-			yield return new WaitForSeconds (reloadTime);
-			isReloading = false;
-			weaponHandler.reload (false);
-			ammoInClip = clipSize;
-		}
 
-        private IEnumerator ShootRoutine()
+        void Update()
         {
-            while (true){
-				if (!isReloading){
-                	Shoot();
-				}
-                yield return new WaitForSeconds(shootTime);
-            }
-        }
-
-        public void StartAutoShoot() {
-            if (!isAutoShooting)
+            timeToNextEvent -= Time.deltaTime;
+            if (timeToNextEvent <= 0)
             {
-                isAutoShooting = true;
-                StartCoroutine(shootCoroutine);
+                if (isReloading)
+                {
+                    isReloading = false;
+                    ammoInClip = clipSize;
+                    weaponAnimator.SetBool(reloadString, isReloading);
+                }
+                else if (isAutoShooting)
+                {
+                    timeToNextEvent += shootTime;
+                    Shoot();
+                }
+                else timeToNextEvent = 0;
             }
         }
 
-        public virtual void StopAutoShoot(){
-            if (isAutoShooting)
+        public void Activate()
+        {
+            if (isAutoShooting) return;
+            isAutoShooting = true;
+        }
+
+        public void Disable()
+        {
+            if (!isAutoShooting) return;
+            isAutoShooting = false;
+        }
+
+		public virtual void Reload()
+        {
+            isReloading = true;
+            weaponAnimator.SetBool(reloadString, isReloading);
+            timeToNextEvent = reloadTime;
+            Debug.Log("Reload");
+        }
+
+        public virtual void Shoot(){
+            if (emitter != null)
             {
-                isAutoShooting = false;
-                StopCoroutine(shootCoroutine);
+                if (ammoInClip == 0) {
+                    Reload();
+                    return;
+                }
+                shootRay.origin = emitter.transform.position - emitter.forward;
+                shootRay.direction = emitter.forward;
+                ammoInClip--;
+                if (Physics.Raycast(shootRay, out shootHit, range + emitter.forward.magnitude, shootAbleMask))
+                {
+                    if (shootHit.collider.CompareTag("Enemy"))
+                    {
+                        Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+                        enemy.GetHit(damage, shootRay.direction);
+                        StartEffects(shootHit.point);
+                        Invoke("StopEffects", 0.05f);
+                    }
+                }
             }
-        }
-		public void Reload() {
-			isReloading = true;
-			weaponHandler.reload (true);
-			StartCoroutine (ReloadRoutine());
-		}
-
-        void Shoot(){
-
-            if (emitter != null) {
-				Debug.Log (ammoInClip);
-				if (ammoInClip == 0) {
-					Reload();
-				} else {
-					shootRay.origin = emitter.transform.position - emitter.forward;
-					shootRay.direction = emitter.forward;
-					ammoInClip--;
-					if (Physics.Raycast (shootRay, out shootHit, range + emitter.forward.magnitude, shootAbleMask)) {
-						if (shootHit.collider.CompareTag ("Enemy")) {
-							Enemy enemy = shootHit.collider.GetComponent<Enemy> ();
-							enemy.GetHit (damage, shootRay.direction);
-							StartEffects (shootHit.point);
-							Invoke ("StopEffects", 0.05f);
-						}
-					}
-
-				}
-			}
         }
 
         protected virtual void StartEffects(Vector3 position){

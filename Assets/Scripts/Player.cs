@@ -91,12 +91,12 @@ namespace Assets.Scripts
                 Agent.updateRotation = false;
                 Vector3 directionVec = focus.position - transform.position;
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(directionVec), Time.deltaTime * Agent.angularSpeed/60f);
-                weaponHandler.Weapon.StartAutoShoot();
+                weaponHandler.Weapon.Activate();
             }
             else
             {
                 Agent.updateRotation = true;
-                weaponHandler.Weapon.StopAutoShoot();
+                weaponHandler.Weapon.Disable();
             }
         }
     }
