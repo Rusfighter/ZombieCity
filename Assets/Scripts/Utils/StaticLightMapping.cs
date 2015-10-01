@@ -6,9 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 public class StaticLightMapping : MonoBehaviour {
-    public Shader lightMapShader;
-    public Shader nonLightMapShader;
-    public bool setShader = false;
+    public Shader finalShader;
 
     public void SetLightMapStatic()
     {
@@ -19,8 +17,6 @@ public class StaticLightMapping : MonoBehaviour {
             GameObject obj = meshes[i].gameObject;
             StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(obj);
             flags = flags & ~(StaticEditorFlags.LightmapStatic);
-
-            Shader finalShader = nonLightMapShader;
 
             Vector3[] vertices = meshes[i].sharedMesh.vertices;
             bool found = false;
@@ -49,7 +45,6 @@ public class StaticLightMapping : MonoBehaviour {
                             {
                                 found = true;
                                 flags = flags | StaticEditorFlags.LightmapStatic;
-                                finalShader = lightMapShader;
                                 break;
                             }
                         }
@@ -59,7 +54,6 @@ public class StaticLightMapping : MonoBehaviour {
                             {
                                 found = true;
                                 flags = flags | StaticEditorFlags.LightmapStatic;
-                                finalShader = lightMapShader;
                                 break;
                             }
                         }
@@ -67,7 +61,7 @@ public class StaticLightMapping : MonoBehaviour {
                 }
             }
 
-            if (setShader) obj.GetComponent<Renderer>().sharedMaterial.shader = finalShader;
+            if (finalShader != null) obj.GetComponent<Renderer>().sharedMaterial.shader = finalShader;
             GameObjectUtility.SetStaticEditorFlags(obj, flags);
 
         }

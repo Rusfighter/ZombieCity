@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 namespace Assets.Scripts
 {
     public class Weapon : MonoBehaviour
@@ -90,7 +88,6 @@ namespace Assets.Scripts
             isReloading = true;
             weaponAnimator.SetBool(reloadString, isReloading);
             timeToNextEvent = reloadTime;
-            Debug.Log("Reload");
         }
 
         public virtual void Shoot(){
