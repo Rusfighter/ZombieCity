@@ -20,6 +20,29 @@ namespace Assets.Scripts
             }
         }
 
+        public virtual void ResetPool()
+        {
+            for (int i = 0; i < pooledObjects.Count; i++)
+            {
+                if (pooledObjects[i].activeInHierarchy)
+                {
+                    pooledObjects[i].SetActive(false);
+                }
+            }
+        }
+
+        public int getActiveObjects()
+        {
+            int amount = 0;
+            for (int i = 0; i < pooledObjects.Count; i++)
+            {
+                if (pooledObjects[i].activeInHierarchy){
+                    amount++;
+                }
+            }
+            return amount;
+        }
+
         public GameObject getPooledObj()
         {
             if (pooledObject == null) return null;

@@ -40,11 +40,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObject: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
-  pooledAmount: 80
-  ableToGrow: 0
+  pooledAmount: 10
+  ableToGrow: 1
   player: {fileID: 0}
-  minSpawn: .00999999978
-  maxSpawn: .200000003
+  chance: 100
   amountOfZombies: 0
 --- !u!1001 &100100000
 Prefab:

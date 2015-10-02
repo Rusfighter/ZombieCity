@@ -76,6 +76,16 @@ public class Enemy : Humanoid
         focussedBy = player;
     }
 
+    void Update()
+    {
+        int random = Random.Range(1, 3);
+        if (!Agent.enabled)
+            random = Random.Range(1, 10);
+
+        if (Time.frameCount % random == 0)
+            SlowUpdate();
+    }
+
     public void SlowUpdate()
     {
         if (player == null) return;
