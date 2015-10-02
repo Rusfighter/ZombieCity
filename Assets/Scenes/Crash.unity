@@ -529,7 +529,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 526904255}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1284,7 +1284,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 189942370}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -2154,34 +2154,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d18f8a18e400b4f4a880ed34037ff101, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &113925795
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &116470240 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -2406,7 +2378,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1206567426}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3002,34 +2974,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6c9b23e54b445f49b6249c416d43bf6, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &168061189
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &169772725 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 6fb06ce08ad6f9b42ae1f5117d1f7944, type: 2}
@@ -3442,34 +3386,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fde22103a04c51c498ada21dfa352a68, type: 2}
   m_PrefabInternal: {fileID: 799756622}
---- !u!21 &189942370
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &191803835 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -3846,7 +3762,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1267139706}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4186,34 +4102,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
   m_PrefabInternal: {fileID: 1763941540}
---- !u!21 &242347544
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &242410114 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -4758,34 +4646,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &279406542
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &282428120
 Prefab:
   m_ObjectHideFlags: 0
@@ -5466,34 +5326,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d153a8045fa3a8143b860fc787040f99, type: 2}
   m_PrefabInternal: {fileID: 312000015}
---- !u!21 &317726115
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &317970003 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -8710,34 +8542,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &526904255
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &532932502 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5d50cf3ef635cb942a43009b33905c3d, type: 2}
@@ -12248,34 +12052,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 756d99540142b5e4a8d174e18a6310d9, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &687597897
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &688363604 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 17a4ffb1eae17e94298de2c66e171a1b, type: 2}
@@ -14859,38 +14635,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 29
       objectReference: {fileID: 0}
-    - target: {fileID: 100014, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967294
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967294
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5efd62e7fbd44ad4da9ed37e4f4b8635, type: 2}
   m_IsPrefabParent: 0
@@ -17230,7 +16974,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1136751897}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -18406,7 +18150,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 279406542}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -19252,7 +18996,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 317726115}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -19314,34 +19058,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1085416557
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1091618341 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -20026,34 +19742,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 455966, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
   m_PrefabInternal: {fileID: 2105583791}
---- !u!21 &1136751897
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1137222529 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
@@ -20390,7 +20078,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1249171749}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -21644,34 +21332,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 501d25c7f0c923348813a11dae66cbdd, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1206567426
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1207116179 stripped
 Transform:
   m_PrefabParentObject: {fileID: 455966, guid: 5e2f023912c596c47996e31ce40947bd, type: 2}
@@ -22232,34 +21892,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3d297aa470482cb4393b22ed578eb87f, type: 2}
   m_PrefabInternal: {fileID: 1403147189}
---- !u!21 &1249171749
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1250327214
 Prefab:
   m_ObjectHideFlags: 0
@@ -22542,34 +22174,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1267139706
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1271365595
 Prefab:
   m_ObjectHideFlags: 0
@@ -22802,7 +22406,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1611495377}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -25106,7 +24710,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 168061189}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -26896,7 +26500,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 113925795}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -28177,34 +27781,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1611495377
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1614470576 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0ccc03e88bfc20c46b4f5ea02f4da61f, type: 2}
@@ -29977,7 +29553,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1085416557}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -30155,7 +29731,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 687597897}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -32567,7 +32143,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1891573285}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
   m_IsPrefabParent: 0
@@ -32579,34 +32155,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fde22103a04c51c498ada21dfa352a68, type: 2}
   m_PrefabInternal: {fileID: 677700674}
---- !u!21 &1891573285
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1894009431
 Prefab:
   m_ObjectHideFlags: 0
@@ -33767,34 +33315,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400010, guid: b967a221e8d0cee4d84b5a2eebd8814c, type: 2}
   m_PrefabInternal: {fileID: 909688068}
---- !u!21 &1957359724
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Fence_Alpha (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 9374810233f31ae4d9afaf7bc7c6dcbb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1957574715 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d80c7433031fdee44bf3910c4b046ce7, type: 2}
@@ -34524,7 +34044,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1957359724}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -35206,7 +34726,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 242347544}
+      objectReference: {fileID: 2100000, guid: 6de43088a311afd40ba211f7794c48aa, type: 2}
     - target: {fileID: 2300002, guid: 2f000214d74aaaf45865925b8ae0d96c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
