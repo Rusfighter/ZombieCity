@@ -24,6 +24,7 @@ public class WaveGenerator : MonoBehaviour {
     void Start()
     {
         setLevel(1);
+        Invoke("Spawn", 0.5f);
     }
 
     void Spawn()
@@ -55,8 +56,6 @@ public class WaveGenerator : MonoBehaviour {
             ZombieSpawner spawner = spawners[i];
             spawner.ResetPool();
             zombies = baseAmount + (int) Mathf.Pow(level-1, toThePower);
-
-            Invoke("Spawn", 5f);
         }
     }
 
