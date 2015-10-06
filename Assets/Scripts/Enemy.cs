@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts;
 using UnityEngine;
-using DG.Tweening;
 
 public class Enemy : Humanoid
 {
@@ -55,9 +54,10 @@ public class Enemy : Humanoid
         base.onDeath();
         capsuleCollider.enabled = false;
         Agent.enabled = false;
-        transform.DOMove(transform.position - transform.up * 1f, 2f).SetDelay(1.5f).OnComplete(()=> {
+        gameObject.SetActive(false);
+        /*transform.DOMove(transform.position - transform.up * 1f, 2f).SetDelay(1.5f).OnComplete(()=> {
             gameObject.SetActive(false);
-        });
+        });*/
     }
 
     public void GetHit(int damage, Vector3 directionFrom)

@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529f6f0d3096f7343894515899c6af82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10000
+  baseHealth: 20
   StopDistance: 30
 --- !u!135 &13571432
 SphereCollider:
@@ -3813,7 +3813,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: baseHealth
-      value: 10000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x

@@ -2,13 +2,13 @@
 
 namespace Assets.Scripts
 {
-    class ZombieSpawner : PoolScript
+    class EnemySpawner : PoolScript
     {
         public Player player = null;
         [Range(1, 100)]
         public int chance = 1;
-        public int WeightOfZombie = 1;
-        public int amountOfZombies = 0;
+        public int WeightOfEnemy = 1;
+        public int amountOfEnemies = 0;
 
         public void Spawn()
         { 
@@ -19,14 +19,14 @@ namespace Assets.Scripts
                 zombie.transform.rotation = transform.rotation;
                 zombie.SetActive(true);
                 zombie.GetComponent<Enemy>().Target = player;
-                amountOfZombies += WeightOfZombie;
+                amountOfEnemies += WeightOfEnemy;
             }
         }
 
         public override void ResetPool()
         {
             base.ResetPool();
-            amountOfZombies = 0;
+            amountOfEnemies = 0;
         }
     }
 }

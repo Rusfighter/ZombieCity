@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
-
 namespace Assets.Scripts
 {
-    class PlayerControls : MonoBehaviour
+    [RequireComponent(typeof(Player))]
+    [RequireComponent(typeof(WeaponHandler))]
+    public class PlayerControls : MonoBehaviour
     {
         Player player;
         WeaponHandler weaponHandler;
 
-
         void Awake()
         {
+            if (FindObjectsOfType(GetType()).Length > 1){
+                Debug.LogError("To many instances of " + GetType());
+                return;
+            }
+
             player = GetComponent<Player>();
             weaponHandler = GetComponent<WeaponHandler>();
         }
@@ -35,7 +40,6 @@ namespace Assets.Scripts
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
                 weaponHandler.nextWeapon();
             }
         }

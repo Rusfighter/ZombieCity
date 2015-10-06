@@ -1,137 +1,138 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
-//==============================================================================
+class SingleBatch
+{
+    public Material mat;
+    public List<CombineInstance> combines = new List<CombineInstance>();
+}
+
 public class MeshMerger : MonoBehaviour
 {
-    public MeshFilter[] meshFilters;
-    MeshFilter meshFilter;
-    Mesh finalMesh;
-    public Material material;
+    List<SingleBatch> batches = new List<SingleBatch>();
 
-    //----------------------------------------------------------------------------
-    void Start()
+    void Awake()
     {
-        // if not specified, go find meshes
-        if (meshFilters.Length == 0)
-        {
-            // find all the mesh filters
-            Component[] comps = GetComponentsInChildren(typeof(MeshFilter));
-            meshFilters = new MeshFilter[comps.Length];
-
-            int mfi = 0;
-            foreach (Component comp in comps)
-                meshFilters[mfi++] = (MeshFilter)comp;
-        }
-
-        // figure out array sizes
-        int vertCount = 0;
-        int normCount = 0;
-        int triCount = 0;
-        int uvCount = 0;
-
-        foreach (MeshFilter mf in meshFilters)
-        {
-            vertCount += mf.mesh.vertices.Length;
-            normCount += mf.mesh.normals.Length;
-            triCount += mf.mesh.triangles.Length;
-            uvCount += mf.mesh.uv.Length;
-            if (material == null)
-                material = mf.gameObject.GetComponent<Renderer>().material;
-        }
-
-        // allocate arrays
-        Vector3[] verts = new Vector3[vertCount];
-        Vector3[] norms = new Vector3[normCount];
-        int[] tris = new int[triCount];
-        Vector2[] uvs = new Vector2[uvCount];
-        int vertOffset = 0;
-        int normOffset = 0;
-        int triOffset = 0;
-        int uvOffset = 0;
-
-        meshFilter = gameObject.AddComponent<MeshFilter>();
-        gameObject.AddComponent<MeshRenderer>();
-
-        foreach (MeshFilter mf in meshFilters)
-        {
-            Mesh m = mf.mesh;
-
-            foreach (int i in m.triangles)
-            {
-                tris[triOffset++] = i + vertOffset;
-            }
-
-            foreach (Vector3 lv in m.vertices)
-            {
-                Vector3 vert = mf.transform.TransformPoint(lv);
-                verts[vertOffset++] = meshFilter.transform.InverseTransformPoint(vert);
-            }
-
-            foreach (Vector3 lv in m.normals)
-            {
-                Vector3 normal = mf.transform.TransformDirection(lv);
-                norms[normOffset++] = meshFilter.transform.InverseTransformPoint(normal);
-            }
-
-            foreach (Vector3 v in m.uv)
-            {
-                uvs[uvOffset++] = new Vector2(v.x, v.y);
-            }
-
-            MeshRenderer mr = mf.gameObject.GetComponent<MeshRenderer>();
-            if (mr) mr.enabled = false;
-        }
-
-        finalMesh = new Mesh();
-        finalMesh.name = gameObject.name;
-        finalMesh.vertices = verts;
-        finalMesh.normals = norms;
-        finalMesh.uv = uvs;
-        finalMesh.triangles = tris;
-
-        meshFilter.mesh = finalMesh;
-
-        GetComponent<Renderer>().material = material;
+        Split(4,4);
     }
 
-    void Update()
+    void Split(int xgrids = 5, int ygrids = 5)
     {
-        SetVerticesAndNormals();
-    }
+        GameObject[,] grids = new GameObject[xgrids, ygrids];
+        MeshFilter[] meshFilters = FindObjectsOfType<MeshFilter>();
 
-    void SetVerticesAndNormals()
-    {
+        float minX = 0;
+        float maxX = 0;
+        float minY = 0;
+        float maxY = 0;
 
-        Vector3[] verts = finalMesh.vertices;
-        Vector3[] norms = finalMesh.normals;
-        int[] tris = finalMesh.triangles;
-        int vertOffset = 0;
-        int normOffset = 0;
-        int triOffset = 0;
-
-        foreach (MeshFilter mf in meshFilters)
+        for (int i = 0; i < meshFilters.Length; i++)
         {
-            Mesh m = mf.mesh;
+            GameObject obj = meshFilters[i].gameObject;
+            if (!isStatic(obj)) continue;
+            Vector3 pos = obj.transform.position;
+            if (pos.x < minX) minX = pos.x;
+            if (pos.x > maxX) maxX = pos.x;
+            if (pos.z < minY) minY = pos.z;
+            if (pos.z > maxY) maxY = pos.z;
+        }
 
-            foreach (int i in m.triangles)
-            {
-                tris[triOffset++] = i + vertOffset;
-            }
 
-            foreach (Vector3 lv in m.vertices)
-            {
-                Vector3 vert = mf.transform.TransformPoint(lv);
-                verts[vertOffset++] = meshFilter.transform.InverseTransformPoint(vert);
-            }
 
-            foreach (Vector3 lv in m.normals)
+        for (int x = 0; x < xgrids; x++)
+        {
+            for (int y = 0; y < ygrids; y++)
             {
-                Vector3 normal = mf.transform.TransformDirection(lv);
-                norms[normOffset++] = meshFilter.transform.InverseTransformDirection(normal);
+                GameObject obj = new GameObject();
+                grids[x, y] = obj;
+                obj.name = "Grid_" + x + "_" + y;
+                obj.transform.SetParent(transform);
             }
         }
 
-        finalMesh.vertices = verts;
-        finalMesh.normals = norms;
+        for (int i = 0; i < meshFilters.Length; i++)
+        {
+            GameObject obj = meshFilters[i].gameObject;
+            if (!isStatic(obj)) continue;
+
+            Vector3 pos = obj.transform.position;
+
+            int xCell = (int) Mathf.Lerp(0, xgrids-1, (pos.x - minX) / (maxX - minX));
+            int yCell = (int) Mathf.Lerp(0, ygrids-1, (pos.z - minY) / (maxY - minY));
+            obj.transform.SetParent(grids[xCell, yCell].transform, true);
+        }
+
+        for (int x = 0; x < xgrids; x++)
+        {
+            for (int y = 0; y < ygrids; y++)
+            {
+                
+            }
+        }
+    }
+
+    void StaticMerging(GameObject parent)
+    {
+        float time = Time.realtimeSinceStartup;
+        MeshFilter[] meshFilters = parent.GetComponentsInChildren<MeshFilter>();
+        for (int i = 0; i < meshFilters.Length; i++)
+        {
+            GameObject obj = meshFilters[i].gameObject;
+            //obj.transform.position = Vector3.zero;
+            if (isStatic(obj)){
+                CombineInstance combine = new CombineInstance();
+                Material mat = obj.GetComponent<Renderer>().sharedMaterial;
+                combine.mesh = meshFilters[i].sharedMesh;
+                combine.transform = meshFilters[i].transform.localToWorldMatrix;
+
+                SingleBatch c = new SingleBatch();
+
+                int index = MaterialInArray(mat);
+                if (MaterialInArray(mat) >= 0)
+                    batches[index].combines.Add(combine);
+                else
+                {
+                    c.mat = mat;
+                    c.combines.Add(combine);
+                    batches.Add(c);
+                }
+
+                obj.GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+
+        for (int i = 0; i < batches.Count; i++)
+        {
+            GameObject obj = new GameObject("Static Batch");
+            MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
+            MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
+            meshFilter.mesh = new Mesh();
+            meshFilter.mesh.CombineMeshes(batches[i].combines.ToArray());
+            meshRenderer.material = batches[i].mat;
+            obj.transform.SetParent(transform);
+            obj.isStatic = true;
+        }
+
+        Debug.Log("Count: " + batches.Count + " Time:" + (Time.realtimeSinceStartup - time));
+        batches.Clear();
+        batches = null;
+        
+    }
+
+    int MaterialInArray(Material mat)
+    {
+        for (int i = 0; i < batches.Count; i++)
+        {
+            if (batches[i].mat == mat) return i;
+        }
+        return -1;
+    }
+
+    bool isStatic(GameObject obj)
+    {
+        StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(obj);
+        if ((flags & StaticEditorFlags.BatchingStatic) == StaticEditorFlags.BatchingStatic) return true;
+        else return false;
     }
 }

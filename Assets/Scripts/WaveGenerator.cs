@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts;
+using System.Collections;
 using UnityEngine;
 
 public class WaveGenerator : MonoBehaviour {
-    protected WaveGenerator() { }
+
+    public static WaveGenerator instance;
 
     public float toThePower = 1.5f;
     public float minSpawnTime = 0.5f;
@@ -10,58 +12,78 @@ public class WaveGenerator : MonoBehaviour {
     public int spawnThreshold = 80;
     public int baseAmount = 10;
 
-    private ZombieSpawner[] spawners;
-    private int zombies;
+    private EnemySpawner[] spawners;
+    private int enemiesToCompleteWave;
     private int totalWeight;
 
+    public int EnemiesToCompleteWave { get { return enemiesToCompleteWave; } }
+
+    private IEnumerator spawnRoutine;
+
     void Awake(){
-        spawners = GetComponentsInChildren<ZombieSpawner>();
+        if (instance == null)
+        {
+            if (FindObjectsOfType(GetType()).Length > 1) {
+                Debug.LogError("To many instances of "+ GetType());
+                return;
+            } else instance = this;
+        }
+
+        spawners = GetComponentsInChildren<EnemySpawner>();
 
         for (int i = 0; i < spawners.Length; i++)
             totalWeight += spawners[i].chance;
+
+        spawnRoutine = Spawn();
     }
 
-    void Start()
+    public void StartSpawning()
     {
-        setLevel(1);
-        Invoke("Spawn", 0.5f);
+        StartCoroutine(spawnRoutine);
+    }
+    public void StopSpawning()
+    {
+        StopCoroutine(spawnRoutine);
     }
 
-    void Spawn()
+    IEnumerator Spawn()
     {
-        if (zombies <= spawnedZombies()) return;
-        if (totalActiveZombies() > spawnThreshold) {
-            Invoke("Spawn", 0.5f);
-            return;
-        }
+        while (true){
+            if (totalActiveEnemies() > spawnThreshold)
+                yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
 
-        int random = Random.Range(1, totalWeight+1);
+            int random = Random.Range(1, totalWeight + 1);
 
-        for (int i = 0; i < spawners.Length; i++){
-            random -= spawners[i].chance;
-            if (random <= 0)
+            for (int i = 0; i < spawners.Length; i++)
             {
-                spawners[i].Spawn();
-                break;
+                random -= spawners[i].chance;
+                if (random <= 0)
+                {
+                    spawners[i].Spawn();
+                    break;
+                }
             }
-        }
 
-        Invoke("Spawn", Random.Range(minSpawnTime, maxSpawnTime));
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+        }
     }
 
-    public void setLevel(int level)
+    public void setWave(int level)
     {
+        StopSpawning();
         for (int i = 0; i < spawners.Length; i++)
         {
-            ZombieSpawner spawner = spawners[i];
+            EnemySpawner spawner = spawners[i];
             spawner.ResetPool();
-            zombies = baseAmount + (int) Mathf.Pow(level-1, toThePower);
+            enemiesToCompleteWave = baseAmount + (int) Mathf.Pow(level-1, toThePower);
         }
     }
 
+    public bool isWaveCompleted(){
+        return enemiesToCompleteWave <= spawnedEnemies() && totalActiveEnemies() == 0;
+    }
 
-
-    public int totalActiveZombies()
+    public int totalActiveEnemies()
     {
         int amount = 0;
         for (int i = 0; i < spawners.Length; i++)
@@ -71,12 +93,12 @@ public class WaveGenerator : MonoBehaviour {
         return amount;
     }
 
-    public int spawnedZombies()
+    public int spawnedEnemies()
     {
         int amount = 0;
         for (int i = 0; i<spawners.Length; i++)
         {
-            amount += spawners[i].amountOfZombies;
+            amount += spawners[i].amountOfEnemies;
         }
         return amount;
     }

@@ -2,12 +2,10 @@
 
 #if UNITY_EDITOR
 using UnityEditor;
-
 using UnityEngine;
 
 public class StaticLightMapping : MonoBehaviour {
     public Shader finalShader;
-
     public void SetLightMapStatic()
     {
         Light[] lights = FindObjectsOfType<Light>();

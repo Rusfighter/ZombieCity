@@ -178,6 +178,12 @@ public class ResourceChecker : EditorWindow {
 				return 8;
 			case TextureFormat.BGRA32://	 Format returned by iPhone camera
 				return 32;
+            case TextureFormat.ETC2_RGB:
+                return 4;
+            case TextureFormat.ETC2_RGBA1:
+                return 4;
+            case TextureFormat.ETC2_RGBA8:
+                return 8;
 #if !UNITY_5
 			case TextureFormat.ATF_RGB_DXT1://	 Flash-specific RGB DXT1 compressed color texture format.
 			case TextureFormat.ATF_RGBA_JPG://	 Flash-specific RGBA JPG-compressed color texture format.
@@ -560,7 +566,7 @@ public class ResourceChecker : EditorWindow {
 #endif
 						if (m != null)
 						{
-							AnimationClip clip = m as AnimationClip;
+							//AnimationClip clip = m as AnimationClip;
 
 							/*EditorCurveBinding[] ecbs = AnimationUtility.GetObjectReferenceCurveBindings(clip);
 
