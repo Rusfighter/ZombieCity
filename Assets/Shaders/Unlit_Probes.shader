@@ -1,4 +1,4 @@
-﻿Shader "Custom/Mobile/ProbesOnly" {
+﻿Shader "Custom/Mobile/ProbesOnly(non batching)" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
 
@@ -11,6 +11,7 @@
 		Pass{
 			Name "FORWARD"
 			Tags{ "LightMode" = "ForwardBase" }
+			Lighting Off
 
 			CGPROGRAM
 			#pragma vertex vert

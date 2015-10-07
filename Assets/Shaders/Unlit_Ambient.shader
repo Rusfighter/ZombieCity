@@ -1,8 +1,4 @@
-﻿// Upgrade NOTE: commented out 'float4 unity_LightmapST', a built-in variable
-// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
-// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
-
-Shader "Custom/Mobile/AmbientShader"
+﻿Shader "Custom/Mobile/AmbientShader"
 {
 	Properties
 	{
@@ -35,9 +31,6 @@ Shader "Custom/Mobile/AmbientShader"
 				float2 uv1 : TEXCOORD1;
 				float4 vertex : SV_POSITION;
 			};
-
-			// sampler2D unity_Lightmap;
-			// float4 unity_LightmapST;
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 namespace Assets.Scripts
 {
 	public class UserInterface : MonoBehaviour {
-		private Text Health;
-		private Text Ammo;
+		public Text Health;
+		public Text Ammo;
 		private int ammoInClip;
 		private int clipSize;
 
@@ -31,7 +31,6 @@ namespace Assets.Scripts
 		
 		// Update is called once per frame
 		void Update () {
-			Health.text = player.Health.ToString ("F0");
 
             //
             if (health != player.Health)

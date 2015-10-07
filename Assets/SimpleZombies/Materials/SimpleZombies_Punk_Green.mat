@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: SimpleZombies_Punk_Green
-  m_Shader: {fileID: 4800000, guid: cc1ad39aaf9ce7240bbcc149889a2534, type: 3}
+  m_Shader: {fileID: 4800000, guid: 424e4a585af005d4a8285795cd89b753, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
