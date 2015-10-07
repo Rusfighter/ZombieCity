@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f107cc1558f99a44a908f5e10229d963
-timeCreated: 1444145252
+timeCreated: 1444221806
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -26,7 +26,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: 45
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: 1
@@ -46,7 +46,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
-  textureType: 5
+  textureType: 6
   buildTargetSettings: []
   spriteSheet:
     sprites: []

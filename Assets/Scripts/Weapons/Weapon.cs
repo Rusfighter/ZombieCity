@@ -11,6 +11,8 @@ namespace Assets.Scripts
 		public float reloadTime = 2;
 		private int ammoInClip; 
 
+        public int AmmoInClip {get { return ammoInClip; } }
+
         protected bool isAutoShooting = false;
 		protected bool isReloading = false;
 

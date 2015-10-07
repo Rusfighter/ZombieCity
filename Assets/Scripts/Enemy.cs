@@ -47,6 +47,14 @@ public class Enemy : Humanoid
         anim = GetComponentInChildren<Animation>();
         fastPath = GetComponent<FastPathFinding>();
         fastPath.speed = Agent.speed;
+
+        //set light probes
+        MeshRenderer[] renderers = gameObject.GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].useLightProbes = true;
+        }
+        renderers = null;
     }
 
     public override void onDeath()

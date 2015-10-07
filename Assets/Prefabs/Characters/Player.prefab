@@ -1313,7 +1313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83529c71f0962264cb787920d85b9b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10000
+  baseHealth: 10
 --- !u!137 &13706248
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1811,7 +1811,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 6f4190d04f9f10a45a9b406180c1d1f8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -2049,7 +2049,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 6f4190d04f9f10a45a9b406180c1d1f8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1

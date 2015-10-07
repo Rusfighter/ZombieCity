@@ -396,7 +396,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -408,7 +408,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3287,7 +3287,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -3299,7 +3299,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3441,7 +3441,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -3453,7 +3453,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3683,7 +3683,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -3695,7 +3695,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5883,7 +5883,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -5895,7 +5895,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -6673,7 +6673,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -6685,7 +6685,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -6853,7 +6853,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -6865,7 +6865,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -7223,7 +7223,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -7235,7 +7235,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -9153,7 +9153,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -9165,7 +9165,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -11035,7 +11035,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -11047,7 +11047,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -11493,7 +11493,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -11505,7 +11505,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -11947,7 +11947,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -11959,7 +11959,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -14395,7 +14395,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -14407,7 +14407,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -15661,7 +15661,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -15673,7 +15673,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -16501,7 +16501,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -16513,7 +16513,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -17631,7 +17631,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -17643,7 +17643,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -18449,7 +18449,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -18461,7 +18461,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -18504,10 +18504,6 @@ Prefab:
     - target: {fileID: 485960, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
       propertyPath: m_RootOrder
       value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489094, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
-      propertyPath: baseHealth
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
@@ -21659,7 +21655,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -21671,7 +21667,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -22975,7 +22971,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -22987,7 +22983,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -23391,7 +23387,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -23403,7 +23399,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -24403,7 +24399,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -24415,7 +24411,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -28797,7 +28793,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -28809,7 +28805,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -29915,7 +29911,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -29927,7 +29923,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -30203,7 +30199,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -30215,7 +30211,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -30427,7 +30423,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -30439,7 +30435,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -31863,7 +31859,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -31875,7 +31871,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -32427,7 +32423,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -32439,7 +32435,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -33748,7 +33744,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -33760,7 +33756,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -33974,7 +33970,7 @@ Light:
   m_SpotAngle: 90
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_Strength: 1
     m_Bias: .0500000007
@@ -33986,7 +33982,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294965247
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0

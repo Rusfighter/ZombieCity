@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -7,9 +6,22 @@ namespace Assets.Scripts
 	public class UserInterface : MonoBehaviour {
 		private Text Health;
 		private Text Ammo;
-		private int AmmoInClip;
-		private int ClipSize;
-		public Player player;
+		private int ammoInClip;
+		private int clipSize;
+
+        private float health;
+        private int wave;
+        private int zombiesLeft;
+
+        private Player player;
+        private WeaponHandler weaponHandler;
+
+        void Awake()
+        {
+            PlayerControls controls = FindObjectOfType<PlayerControls>();
+            player = controls.gameObject.GetComponent<Player>();
+            weaponHandler = controls.gameObject.GetComponent<WeaponHandler>();
+        }
 
 		void Start () {
 			Health.text = "100";
@@ -20,6 +32,19 @@ namespace Assets.Scripts
 		// Update is called once per frame
 		void Update () {
 			Health.text = player.Health.ToString ("F0");
+
+            //
+            if (health != player.Health)
+            {
+                health = player.Health;
+                Health.text = ((int) health).ToString();
+            }
+
+            if (ammoInClip != weaponHandler.Weapon.AmmoInClip)
+            {
+                ammoInClip = weaponHandler.Weapon.AmmoInClip;
+                Ammo.text = ammoInClip.ToString();
+            }
 		
 		}
 	}

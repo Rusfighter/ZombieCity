@@ -19,6 +19,7 @@ Shader "Custom/Mobile/AmbientShader"
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile LIGHTMAP_ON LIGHTMAP_OFF
+			#pragma fragmentoption ARB_precision_hint_fastest
 
 			#include "UnityCG.cginc"
 

@@ -34,6 +34,8 @@ public class GameHandler : MonoBehaviour {
         }
 
         players = FindObjectsOfType<Player>();
+        if (players.Length < 1)
+            Debug.LogError("No player exists!");
     }
 
     void Start()
