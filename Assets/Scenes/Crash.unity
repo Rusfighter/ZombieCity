@@ -5795,6 +5795,14 @@ Prefab:
       propertyPath: m_MatchWidthOrHeight
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 162114, guid: 456622d66a7b84342a037387194a3a96, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442950, guid: 456622d66a7b84342a037387194a3a96, type: 2}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 456622d66a7b84342a037387194a3a96, type: 2}
   m_IsPrefabParent: 0

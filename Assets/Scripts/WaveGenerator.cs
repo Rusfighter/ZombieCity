@@ -17,7 +17,9 @@ public class WaveGenerator : MonoBehaviour {
     private int totalWeight;
 
     public int EnemiesToCompleteWave { get { return enemiesToCompleteWave; } }
-
+	public int EnemiesLeft {
+		get { return enemiesToCompleteWave - spawnedEnemies() + totalActiveEnemies(); }
+	}
     private IEnumerator spawnRoutine;
 
     void Awake(){
