@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+
 namespace Assets.Scripts
 {
     [RequireComponent(typeof(Player))]
@@ -7,6 +9,8 @@ namespace Assets.Scripts
     {
         Player player;
         WeaponHandler weaponHandler;
+        EventSystem eventSystem;
+        bool isOnUI = false;
 
         void Awake()
         {
@@ -17,6 +21,7 @@ namespace Assets.Scripts
 
             player = GetComponent<Player>();
             weaponHandler = GetComponent<WeaponHandler>();
+            eventSystem = EventSystem.current;
         }
 
         void Start()
@@ -30,12 +35,20 @@ namespace Assets.Scripts
 
             if (Input.GetMouseButtonDown(1))
             {
-                ClickAction(Input.mousePosition);
+                if (!EventSystem.current.IsPointerOverGameObject())
+                    ClickAction(Input.mousePosition);
 
             }
             else if (Input.touchCount > 0)
             {
-                ClickAction(Input.GetTouch(0).position);
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began) {
+                    isOnUI = eventSystem.IsPointerOverGameObject(touch.fingerId);
+                    if (!isOnUI) ClickAction(touch.position);
+                }
+                else if (touch.phase == TouchPhase.Moved)
+                    if (!isOnUI) ClickAction(touch.position);
+                else isOnUI = false;
             }
 
             if (Input.GetKeyDown(KeyCode.Space))

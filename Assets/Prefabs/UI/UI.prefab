@@ -62,7 +62,7 @@ GameObject:
   - 222: {fileID: 22232506}
   - 114: {fileID: 11439246}
   m_Layer: 5
-  m_Name: Skull
+  m_Name: ZombiesLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 22420122}
   m_HandleRect: {fileID: 0}
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 480, y: 320}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: .5
   m_PhysicalUnit: 3
@@ -468,7 +468,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 100
@@ -528,7 +528,7 @@ MonoBehaviour:
     m_Alignment: 2
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: $112
 --- !u!114 &11466326
@@ -606,6 +606,7 @@ MonoBehaviour:
   Wave: {fileID: 11475708}
   ZombiesLeft: {fileID: 11499538}
   AmmoInClip: {fileID: 11466326}
+  WeaponImage: {fileID: 11458656}
   ClipSlider: {fileID: 11426270}
 --- !u!114 &11472680
 MonoBehaviour:
@@ -762,7 +763,7 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
@@ -888,11 +889,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 22419760}
-  m_RootOrder: 2
+  m_Father: {fileID: 22460714}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 35, y: 0}
   m_SizeDelta: {x: 40, y: 35}
   m_Pivot: {x: .5, y: 0}
 --- !u!224 &22411108
@@ -926,13 +927,12 @@ RectTransform:
   m_Children:
   - {fileID: 22427132}
   - {fileID: 22460714}
-  - {fileID: 22402712}
   m_Father: {fileID: 22411108}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 1}
   m_AnchorMax: {x: .5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 60}
+  m_SizeDelta: {x: 150, y: 65}
   m_Pivot: {x: .5, y: 1}
 --- !u!224 &22420122
 RectTransform:
@@ -1021,7 +1021,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 30}
+  m_SizeDelta: {x: 50, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &22447618
 RectTransform:
@@ -1068,7 +1068,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 22402712}
   m_Father: {fileID: 22419760}
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 0}
@@ -1128,7 +1129,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 45}
+  m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &22493072
 RectTransform:
@@ -1155,7 +1156,7 @@ RectTransform:
   m_GameObject: {fileID: 122162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.19624996, y: 1.19624996, z: 1.19624996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22480270}
   - {fileID: 22433122}
@@ -1164,7 +1165,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 45}
+  m_SizeDelta: {x: 180, y: 45}
   m_Pivot: {x: 1, y: 0}
 --- !u!1001 &100100000
 Prefab:

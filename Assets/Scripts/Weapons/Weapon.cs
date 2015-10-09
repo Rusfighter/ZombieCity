@@ -13,6 +13,8 @@ namespace Assets.Scripts
 
         public int AmmoInClip {get { return ammoInClip; } }
 
+        public bool IsReloading {get { return isReloading; } }
+
         protected bool isAutoShooting = false;
 		protected bool isReloading = false;
 
@@ -87,6 +89,7 @@ namespace Assets.Scripts
 
 		public virtual void Reload()
         {
+            if (isReloading) return;
             isReloading = true;
             weaponAnimator.SetBool(reloadString, isReloading);
             timeToNextEvent = reloadTime;

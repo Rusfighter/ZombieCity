@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using DG.Tweening;
+
 namespace Assets.Scripts
 {
 	public class UserInterface : MonoBehaviour {
@@ -9,6 +11,7 @@ namespace Assets.Scripts
 		public Text Wave;
 		public Text ZombiesLeft;
 		public Text AmmoInClip;
+        public Image WeaponImage;
 
 		public Slider ClipSlider;
 
@@ -20,16 +23,21 @@ namespace Assets.Scripts
         private int wave;
         private int zombiesLeft;
 
+        private bool isReloading = false;
+
         private Player player;
         private WeaponHandler weaponHandler;
 
-
+        //Tweens
+        Tween reloadTween;
 	
         void Awake()
         {
             PlayerControls controls = FindObjectOfType<PlayerControls>();
             player = controls.gameObject.GetComponent<Player>();
             weaponHandler = controls.gameObject.GetComponent<WeaponHandler>();
+
+            DOTween.Init();
 
         }
 
@@ -52,9 +60,19 @@ namespace Assets.Scripts
             if (health != player.Health)
             {
                 health = player.Health;
-                Health.text = health.ToString("F0");
+                Health.text = ((int) health).ToString();
             	
 			}
+
+            if (isReloading != weaponHandler.Weapon.IsReloading)
+            {
+                isReloading = weaponHandler.Weapon.IsReloading;
+                if (reloadTween == null || !reloadTween.IsPlaying()){
+                    reloadTween = WeaponImage.DOFade(0f, 0.3f).From();
+                    reloadTween.SetLoops(int.MaxValue, LoopType.Yoyo);
+                }
+                else reloadTween.Complete();
+            }
 
             if (ammoInClip != weaponHandler.Weapon.AmmoInClip)
             {
