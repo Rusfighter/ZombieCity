@@ -62,7 +62,7 @@ public class GameHandler : MonoBehaviour {
             switch (state)
             {
                 case LevelState.WAVE_SETUP:
-                    yield return new WaitForSeconds(10);
+                    yield return new WaitForSeconds(1);
                     waveGenerator.setWave(level);
                     waveGenerator.StartSpawning();
                     State = LevelState.WAVE_BUSY;
