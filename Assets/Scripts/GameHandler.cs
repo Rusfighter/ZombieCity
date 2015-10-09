@@ -6,7 +6,7 @@ public class GameHandler : MonoBehaviour {
     public static GameHandler instance;
 
     public enum LevelState {
-        WAVE_SETUP, WAVE_BUSY, WAVE_COMPLETED, GAME_OVER
+        WAVE_SETUP, WAVE_BUSY, WAVE_COMPLETED, GAME_OVER, EMPTY
     }
 
     private int level = 1;
@@ -62,7 +62,7 @@ public class GameHandler : MonoBehaviour {
             switch (state)
             {
                 case LevelState.WAVE_SETUP:
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(5);
                     waveGenerator.setWave(level);
                     waveGenerator.StartSpawning();
                     State = LevelState.WAVE_BUSY;

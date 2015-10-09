@@ -1298,6 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63106515671fea94fbf7d40a7db81bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWeapon: 1
   weapons:
   - {fileID: 189030, guid: 3be9cb65f57089d4dbe0ea5d74acea21, type: 2}
   - {fileID: 128484, guid: e1dca0ae45c10014097adc07fcb0f509, type: 2}
@@ -1313,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83529c71f0962264cb787920d85b9b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
+  baseHealth: 100
 --- !u!137 &13706248
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1811,7 +1812,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 6f4190d04f9f10a45a9b406180c1d1f8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -2049,7 +2050,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 6f4190d04f9f10a45a9b406180c1d1f8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1

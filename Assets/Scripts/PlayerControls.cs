@@ -24,11 +24,6 @@ namespace Assets.Scripts
             eventSystem = EventSystem.current;
         }
 
-        void Start()
-        {
-            weaponHandler.setWeapon(1);
-        }
-
         void Update()
         {
             if (player.isDead) return;

@@ -12,6 +12,7 @@ namespace Assets.Scripts
 		public Text ZombiesLeft;
 		public Text AmmoInClip;
         public Image WeaponImage;
+        public Text Announcement;
 
 		public Slider ClipSlider;
 
@@ -28,8 +29,11 @@ namespace Assets.Scripts
         private Player player;
         private WeaponHandler weaponHandler;
 
+        private GameHandler.LevelState state = GameHandler.LevelState.EMPTY;
+
         //Tweens
         Tween reloadTween;
+        Tween announcementTween;
 	
         void Awake()
         {
@@ -40,11 +44,6 @@ namespace Assets.Scripts
             DOTween.Init();
 
         }
-
-		void Start () {
-			//Wave.text = "100";
-			// En dit zal later natuurlijk AmmoInClip/TotalAmmo zijn
-		}
 		
 		// Update is called once per frame
 		void Update () {
@@ -63,6 +62,26 @@ namespace Assets.Scripts
                 Health.text = ((int) health).ToString();
             	
 			}
+
+            if (state != GameHandler.instance.State)
+            {
+                state = GameHandler.instance.State;
+                switch (state)
+                {
+                    case GameHandler.LevelState.GAME_OVER:
+                        SetAnnouncement("Game Over!");
+                        break;
+                    case GameHandler.LevelState.WAVE_BUSY:
+                        SetAnnouncement("Kill all the zombies!");
+                        break;
+                    case GameHandler.LevelState.WAVE_COMPLETED:
+                        SetAnnouncement("Wave completed!");
+                        break;
+                    case GameHandler.LevelState.WAVE_SETUP:
+                        SetAnnouncement("Prepare yourself \n Bullshit is comming!");
+                        break;
+                }
+            }
 
             if (isReloading != weaponHandler.Weapon.IsReloading)
             {
@@ -85,6 +104,18 @@ namespace Assets.Scripts
 		public void Reload () {
 			weaponHandler.ReloadWeapon ();
 		}
+        
+        void SetAnnouncement(string text)
+        {
+            if (announcementTween != null && announcementTween.IsPlaying()) return;
+            Announcement.gameObject.SetActive(true);
+            announcementTween = Announcement.DOText(text, 2f, true, ScrambleMode.Numerals).OnComplete(()=> {
+                announcementTween = Announcement.DOFade(0, 0.3f).SetDelay(1.5f).OnComplete(()=> {
+                    Announcement.DOFade(1, 0);
+                    Announcement.gameObject.SetActive(false);
+                });
+            });
+        }
 	}
 
 }

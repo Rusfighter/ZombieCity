@@ -2,9 +2,10 @@
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour {
-
+    public int startWeapon = 0;
     public GameObject[] weapons;
     public Transform weaponContainer;
+
     private int weaponIndex = -1;
 
     private Animator charAnimator;
@@ -18,6 +19,11 @@ public class WeaponHandler : MonoBehaviour {
     void Awake()
     {
         charAnimator = transform.GetComponentInChildren<Animator>();
+    }
+
+    void Start()
+    {
+        setWeapon(startWeapon);
     }
 
     public void nextWeapon()
