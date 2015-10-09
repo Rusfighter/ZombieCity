@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Cap_Backwards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperArm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Prop_Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hand_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 33: {fileID: 3300006}
   - 23: {fileID: 2300006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Cap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerArm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 33: {fileID: 3300008}
   - 23: {fileID: 2300008}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 33: {fileID: 3300010}
   - 23: {fileID: 2300010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hand_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400022}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - 4: {fileID: 400024}
   - 33: {fileID: 3300012}
   - 23: {fileID: 2300012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hair_Bobs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   - 4: {fileID: 400026}
   - 33: {fileID: 3300014}
   - 23: {fileID: 2300014}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Prop_FireFighterPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - 4: {fileID: 400028}
   - 33: {fileID: 3300016}
   - 23: {fileID: 2300016}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hair_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - 4: {fileID: 400030}
   - 33: {fileID: 3300018}
   - 23: {fileID: 2300018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hair_Punk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - 4: {fileID: 400032}
   - 33: {fileID: 3300020}
   - 23: {fileID: 2300020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hair_Ponytail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Left_jnt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - 4: {fileID: 400036}
   - 33: {fileID: 3300022}
   - 23: {fileID: 2300022}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperLeg_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - 4: {fileID: 400038}
   - 33: {fileID: 3300024}
   - 23: {fileID: 2300024}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Right_jnt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - 4: {fileID: 400044}
   - 33: {fileID: 3300026}
   - 23: {fileID: 2300026}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Hobo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - 4: {fileID: 400046}
   - 33: {fileID: 3300028}
   - 23: {fileID: 2300028}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - 4: {fileID: 400048}
   - 33: {fileID: 3300030}
   - 23: {fileID: 2300030}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerArm_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - 4: {fileID: 400050}
   - 33: {fileID: 3300032}
   - 23: {fileID: 2300032}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Police
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ GameObject:
   - 4: {fileID: 400052}
   - 33: {fileID: 3300034}
   - 23: {fileID: 2300034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400054}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400056}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hips_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   - 4: {fileID: 400058}
   - 33: {fileID: 3300036}
   - 23: {fileID: 2300036}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hand_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400060}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400062}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   - 4: {fileID: 400064}
   - 33: {fileID: 3300038}
   - 23: {fileID: 2300038}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hand_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400066}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperArm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - 4: {fileID: 400068}
   - 33: {fileID: 3300040}
   - 23: {fileID: 2300040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WarHelmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   - 4: {fileID: 400070}
   - 33: {fileID: 3300042}
   - 23: {fileID: 2300042}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Pimp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400072}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,8 +607,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400074}
-  - 95: {fileID: 9500000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SimpleZombies_01_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +622,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400076}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +639,7 @@ GameObject:
   - 4: {fileID: 400078}
   - 33: {fileID: 3300044}
   - 23: {fileID: 2300044}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_FireFighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +656,7 @@ GameObject:
   - 4: {fileID: 400080}
   - 33: {fileID: 3300046}
   - 23: {fileID: 2300046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RiotHelmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400082}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spine_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +688,7 @@ GameObject:
   - 4: {fileID: 400084}
   - 33: {fileID: 3300048}
   - 23: {fileID: 2300048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +705,7 @@ GameObject:
   - 4: {fileID: 400086}
   - 33: {fileID: 3300050}
   - 23: {fileID: 2300050}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerArm_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -723,7 +722,7 @@ GameObject:
   - 4: {fileID: 400088}
   - 33: {fileID: 3300052}
   - 23: {fileID: 2300052}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +737,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400090}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Root_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +754,7 @@ GameObject:
   - 4: {fileID: 400092}
   - 33: {fileID: 3300054}
   - 23: {fileID: 2300054}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GasMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +771,7 @@ GameObject:
   - 4: {fileID: 400094}
   - 33: {fileID: 3300056}
   - 23: {fileID: 2300056}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -789,7 +788,7 @@ GameObject:
   - 4: {fileID: 400096}
   - 33: {fileID: 3300058}
   - 23: {fileID: 2300058}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Sheriff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -804,7 +803,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400098}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Foot_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +820,7 @@ GameObject:
   - 4: {fileID: 400100}
   - 33: {fileID: 3300060}
   - 23: {fileID: 2300060}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hat_Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +837,7 @@ GameObject:
   - 4: {fileID: 400102}
   - 33: {fileID: 3300062}
   - 23: {fileID: 2300062}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerLeg_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +852,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400104}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerArm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2540,30 +2539,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100102}
   m_Mesh: {fileID: 4300002, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
---- !u!95 &9500000
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100074}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92c93b80307cf90438fcfadd52eab10c, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100074}

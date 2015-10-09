@@ -51,6 +51,12 @@ public class WaveGenerator : MonoBehaviour {
     IEnumerator Spawn()
     {
         while (true){
+
+            if (spawnedEnemies() >= enemiesToCompleteWave){
+                StopSpawning();
+                yield return null;
+            }
+
             if (totalActiveEnemies() > spawnThreshold)
                 yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
 
