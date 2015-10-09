@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class StaticLightMapping : MonoBehaviour {
     public Shader finalShader;
+    public LayerMask nonLightMap;
+
     public void SetLightMapStatic()
     {
         Light[] lights = FindObjectsOfType<Light>();

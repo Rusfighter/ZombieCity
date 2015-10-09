@@ -146,11 +146,11 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: .00999999978
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
     importBlendShapes: 0
     swapUVChannels: 0

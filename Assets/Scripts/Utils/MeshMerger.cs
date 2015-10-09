@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -136,3 +138,4 @@ public class MeshMerger : MonoBehaviour
         else return false;
     }
 }
+#endif

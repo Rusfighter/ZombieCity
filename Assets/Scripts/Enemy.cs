@@ -55,9 +55,7 @@ public class Enemy : Humanoid
         capsuleCollider.enabled = false;
         Agent.enabled = false;
         gameObject.SetActive(false);
-        /*transform.DOMove(transform.position - transform.up * 1f, 2f).SetDelay(1.5f).OnComplete(()=> {
-            gameObject.SetActive(false);
-        });*/
+        // particle animation
     }
 
     public void GetHit(int damage, Vector3 directionFrom)
