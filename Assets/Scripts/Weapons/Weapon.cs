@@ -98,15 +98,16 @@ namespace Assets.Scripts
         public virtual void Shoot(){
             if (emitter != null)
             {
-                if (ammoInClip == 0) {
-                    Reload();
-                    return;
-                }
                 shootRay.origin = emitter.transform.position - emitter.forward;
                 shootRay.direction = emitter.forward;
-                ammoInClip--;
                 if (Physics.Raycast(shootRay, out shootHit, range + emitter.forward.magnitude, shootAbleMask))
                 {
+					if (ammoInClip == 0) {
+						Reload();
+						return;
+					}
+					ammoInClip--;
+
                     if (shootHit.collider.CompareTag("Enemy"))
                     {
                         Enemy enemy = shootHit.collider.GetComponent<Enemy>();

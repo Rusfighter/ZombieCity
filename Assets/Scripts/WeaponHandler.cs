@@ -19,11 +19,7 @@ public class WeaponHandler : MonoBehaviour {
     void Awake()
     {
         charAnimator = transform.GetComponentInChildren<Animator>();
-    }
-
-    void Start()
-    {
-        setWeapon(startWeapon);
+		setWeapon(startWeapon);
     }
 
     public void nextWeapon()

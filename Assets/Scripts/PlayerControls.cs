@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Assets.Scripts
 {
@@ -8,9 +9,9 @@ namespace Assets.Scripts
     public class PlayerControls : MonoBehaviour
     {
         Player player;
-        WeaponHandler weaponHandler;
-        EventSystem eventSystem;
-        bool isOnUI = false;
+        //WeaponHandler weaponHandler;
+        //EventSystem eventSystem;
+        //bool isOnUI = false;
 
         void Awake()
         {
@@ -20,15 +21,16 @@ namespace Assets.Scripts
             }
 
             player = GetComponent<Player>();
-            weaponHandler = GetComponent<WeaponHandler>();
-            eventSystem = EventSystem.current;
+            //weaponHandler = GetComponent<WeaponHandler>();
+            //eventSystem = EventSystem.current;
         }
 
         void Update()
         {
-            if (player.isDead) return;
+			if (player.isDead)
+				return;
 
-            if (Input.GetMouseButtonDown(1))
+			/*if (Input.GetMouseButtonDown(1))
             {
                 if (!EventSystem.current.IsPointerOverGameObject())
                     ClickAction(Input.mousePosition);
@@ -49,8 +51,15 @@ namespace Assets.Scripts
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 weaponHandler.nextWeapon();
-            }
-        }
+            }*/
+
+
+			Vector3 forward = new Vector3 (CrossPlatformInputManager.GetAxis ("dHorizontal"), 0, CrossPlatformInputManager.GetAxis ("dVertical"));
+			if (Vector3.zero != forward) player.SetForward (forward);
+
+			Vector3 direction = new Vector3 (CrossPlatformInputManager.GetAxis ("Horizontal"), 0, CrossPlatformInputManager.GetAxis ("Vertical"));
+			player.SetMovementDirection (direction);
+		}
 
         void ClickAction(Vector3 position)
         {

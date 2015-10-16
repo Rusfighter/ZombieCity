@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 namespace Assets.Scripts
 {
@@ -34,9 +35,16 @@ namespace Assets.Scripts
             charAnimator = transform.GetChild(0).GetComponent<Animator>();
             weaponHandler = GetComponent<WeaponHandler>();
             focusEffect = transform.FindChild("FocusEffect");
+			Agent.updateRotation = false;
+
+
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             Application.targetFrameRate = 30;
         }
+
+		void Start(){
+			weaponHandler.Weapon.Activate();
+		}
 
         public override void GetHit(float damage) {
             base.GetHit(damage);
@@ -64,9 +72,9 @@ namespace Assets.Scripts
 
         void Update() {
             if (isDead) return;
-            LookAtEnemy();
+            //LookAtEnemy();
             UpdateAnimation();
-        }
+		}
 
         private void UpdateAnimation() {
             Vector3 lookTo = transform.forward.normalized;
@@ -81,6 +89,14 @@ namespace Assets.Scripts
             angle = Vector3.Angle(moveDirection, lookTo) * Mathf.Deg2Rad;
             charAnimator.SetFloat("Turn", Mathf.Cos(angle) * Agent.velocity.magnitude / Agent.speed);
         }
+
+		public void SetForward(Vector3 forward){
+			transform.forward = forward.normalized;
+		}
+
+		public void SetMovementDirection(Vector3 dir){
+			Agent.velocity = dir.normalized * Agent.speed;
+		}
 
         void LookAtEnemy() {
 
