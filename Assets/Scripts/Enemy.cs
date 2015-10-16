@@ -19,6 +19,9 @@ public class Enemy : Humanoid
 
     private FastPathFinding fastPath;
 
+	private Transform zombieDeathParticleTransform;
+	private ParticleSystem zombieDeathParticle;
+
 
     public Player Target {
         set {
@@ -47,6 +50,9 @@ public class Enemy : Humanoid
         anim = GetComponentInChildren<Animation>();
         fastPath = GetComponent<FastPathFinding>();
         fastPath.speed = Agent.speed;
+
+		zombieDeathParticleTransform = GameObject.Find ("ZombieDeadParticle").transform;
+		zombieDeathParticle = zombieDeathParticleTransform.GetComponent<ParticleSystem> ();
     }
 
     public override void onDeath()
@@ -56,6 +62,9 @@ public class Enemy : Humanoid
         Agent.enabled = false;
         gameObject.SetActive(false);
         // particle animation
+		zombieDeathParticleTransform.position = transform.position;
+		zombieDeathParticle.Stop ();
+		zombieDeathParticle.Play ();
     }
 
     public void GetHit(int damage, Vector3 directionFrom)

@@ -5,10 +5,14 @@ namespace Assets.Scripts
     {
         public int damage = 10;
         public float range = 15f;
+		[Range(1, 100)]
+		public int accuracy = 100;
         public float shootTime = 0.1f;
         public int animationInt = 1;
 		public int clipSize = 30;
 		public float reloadTime = 2;
+
+
 		private int ammoInClip; 
 
         public int AmmoInClip {get { return ammoInClip; } }
@@ -99,8 +103,8 @@ namespace Assets.Scripts
             if (emitter != null)
             {
                 shootRay.origin = emitter.transform.position - emitter.forward;
-                shootRay.direction = emitter.forward;
-                if (Physics.Raycast(shootRay, out shootHit, range + emitter.forward.magnitude, shootAbleMask))
+                shootRay.direction = emitter.forward.normalized;
+                if (Physics.Raycast(shootRay, out shootHit, range + 1, shootAbleMask))
                 {
 					if (ammoInClip == 0) {
 						Reload();
@@ -108,12 +112,16 @@ namespace Assets.Scripts
 					}
 					ammoInClip--;
 
-                    if (shootHit.collider.CompareTag("Enemy"))
+					StartEffects(shootHit.point);
+					Invoke("StopEffects", 0.05f);
+
+					if (shootHit.collider.CompareTag("Enemy"))
                     {
-                        Enemy enemy = shootHit.collider.GetComponent<Enemy>();
-                        enemy.GetHit(damage, shootRay.direction);
-                        StartEffects(shootHit.point);
-                        Invoke("StopEffects", 0.05f);
+						if (Random.Range(1, 100) <= accuracy){
+							Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+							enemy.GetHit(damage, shootRay.direction);
+						}else
+							Debug.Log ("missed");
                     }
                 }
             }

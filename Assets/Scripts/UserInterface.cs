@@ -6,6 +6,7 @@ using DG.Tweening;
 namespace Assets.Scripts
 {
 	public class UserInterface : MonoBehaviour {
+		public UserInterface instance;
 		public Text Health;
 		public Text Ammo;
 		public Text Wave;
@@ -37,12 +38,20 @@ namespace Assets.Scripts
 	
         void Awake()
         {
+			if (instance == null)
+			{
+				if (FindObjectsOfType(GetType()).Length > 1)
+				{
+					Debug.LogError("To many instances of " + GetType());
+					return;
+				} else instance = this;
+			}
+
             PlayerControls controls = FindObjectOfType<PlayerControls>();
             player = controls.gameObject.GetComponent<Player>();
             weaponHandler = controls.gameObject.GetComponent<WeaponHandler>();
 
             DOTween.Init();
-
         }
 		
 		// Update is called once per frame
