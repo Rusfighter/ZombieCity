@@ -4,13 +4,14 @@ namespace Assets.Scripts
     public class Weapon : MonoBehaviour
     {
         public int damage = 10;
-        public float range = 15f;
 		[Range(1, 100)]
 		public int accuracy = 100;
         public float shootTime = 0.1f;
         public int animationInt = 1;
 		public int clipSize = 30;
 		public float reloadTime = 2;
+
+		public Sprite UiIcon;
 
 
 		private int ammoInClip; 
@@ -38,6 +39,9 @@ namespace Assets.Scripts
 
         private float timeToNextEvent = 0;
 
+		private Camera mainCamera;
+		private float range;
+
         public void Init(Animator weaponAnimator)
         {
             this.weaponAnimator = weaponAnimator;
@@ -57,6 +61,10 @@ namespace Assets.Scripts
             shootAbleMask = LayerMask.GetMask("ShootAble");
 
             ammoInClip = clipSize;
+			mainCamera = Camera.main;
+
+			float z = mainCamera.WorldToScreenPoint (emitter.transform.position).z;
+			range = Vector3.Distance(mainCamera.ViewportToWorldPoint(new Vector3(0f,0.5f, z)), mainCamera.ViewportToWorldPoint(new Vector3(0.5f,0.5f, z))) ;
         }
 
         void Update()
@@ -102,10 +110,17 @@ namespace Assets.Scripts
         public virtual void Shoot(){
             if (emitter != null)
             {
-                shootRay.origin = emitter.transform.position - emitter.forward;
+                shootRay.origin = emitter.transform.position - emitter.forward.normalized;
                 shootRay.direction = emitter.forward.normalized;
-                if (Physics.Raycast(shootRay, out shootHit, range + 1, shootAbleMask))
+
+                if (Physics.Raycast(shootRay, out shootHit, range, shootAbleMask))
                 {
+					Vector3 viewportPoint = mainCamera.WorldToViewportPoint(shootHit.point);
+					if (viewportPoint.x < 0 || viewportPoint.x > 1
+					    || viewportPoint.y < 0 || viewportPoint.y > 1){
+						return;
+					}
+
 					if (ammoInClip == 0) {
 						Reload();
 						return;
@@ -118,7 +133,6 @@ namespace Assets.Scripts
 					if (shootHit.collider.CompareTag("Enemy"))
                     {
 						float chance = Mathf.Lerp(100, accuracy, shootHit.distance/range);
-						Debug.Log ("chance: "+chance);
 						if (Random.Range(1, 100) <= chance){
 							Enemy enemy = shootHit.collider.GetComponent<Enemy>();
 							enemy.GetHit(damage, shootRay.direction);

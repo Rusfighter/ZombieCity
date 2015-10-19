@@ -105,8 +105,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 80
   range: 50
+  accuracy: 100
   shootTime: 1
   animationInt: 6
+  clipSize: 30
+  reloadTime: 2
+  UiIcon: {fileID: 21300000, guid: 053e34cf2d2954163a81e29b459d3bfd, type: 3}
+  weaponAnimator: {fileID: 0}
 --- !u!120 &12056368
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1249,7 +1254,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: UiIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 053e34cf2d2954163a81e29b459d3bfd,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167754}

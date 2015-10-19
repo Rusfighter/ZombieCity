@@ -98,7 +98,7 @@ namespace Assets.Scripts
 			Agent.velocity = dir.normalized * Agent.speed;
 		}
 
-        void LookAtEnemy() {
+        /*void LookAtEnemy() {
 
             if (focusSrc != null && focusSrc.isDead) ResetFocus();
 
@@ -114,6 +114,6 @@ namespace Assets.Scripts
                 Agent.updateRotation = true;
                 weaponHandler.Weapon.Disable();
             }
-        }
+        }*/
     }
 }

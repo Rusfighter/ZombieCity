@@ -19,6 +19,10 @@ public class WeaponHandler : MonoBehaviour {
     void Awake()
     {
         charAnimator = transform.GetComponentInChildren<Animator>();
+		//init all weapons
+		setWeapon (0);
+		setWeapon (1);
+
 		setWeapon(startWeapon);
     }
 
@@ -38,24 +42,29 @@ public class WeaponHandler : MonoBehaviour {
     public void setWeapon(int index)
     {
         if (index < 0 || index >= weapons.Length || weaponIndex == index) return;
+		GameObject weapon = getNextWeapon ();
+		if (weapon != null)
+			setWeapon (weapon);
+		else setWeapon(Instantiate(weapons[index]));
 
-        weaponIndex = index;
-
-        for (int i = 0; i < weaponContainer.childCount; i++)
-        {
-            GameObject child = weaponContainer.GetChild(i).gameObject;
-            if (child.name == weapons[index].name+"(Clone)"){
-                setWeapon(child);
-                return;
-            }
-        }
-
-        setWeapon(Instantiate(weapons[index]));
+		weaponIndex = index;
     }
 
 	public void ReloadWeapon () {
         weapon.Reload();
     }
+
+	public GameObject getNextWeapon(){
+		int index = weaponIndex + 1;
+		if (index >= weapons.Length) index = 0;
+
+		for (int i = 0; i < weaponContainer.childCount; i++)
+		{
+			GameObject child = weaponContainer.GetChild(i).gameObject;
+			if (child.name == weapons[index].name+"(Clone)") return child;
+		}
+		return null;
+	}
 
     private void setWeapon(GameObject obj)
     {
@@ -68,5 +77,6 @@ public class WeaponHandler : MonoBehaviour {
         obj.SetActive(true);
         weapon = obj.GetComponent<Weapon>();
         weapon.Init(charAnimator);
+		weapon.Activate ();
     }
 }

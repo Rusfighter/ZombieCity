@@ -6,13 +6,14 @@ using DG.Tweening;
 namespace Assets.Scripts
 {
 	public class UserInterface : MonoBehaviour {
-		public UserInterface instance;
+		public static UserInterface instance;
 		public Text Health;
 		public Text Ammo;
 		public Text Wave;
 		public Text ZombiesLeft;
 		public Text AmmoInClip;
         public Image WeaponImage;
+		public Image SecondWeaponImage;
         public Text Announcement;
 
 		public Slider ClipSlider;
@@ -53,6 +54,12 @@ namespace Assets.Scripts
 
             DOTween.Init();
         }
+
+		void Start(){
+			//set images, stats etc here
+			Weapon weapon = weaponHandler.getNextWeapon ().GetComponent<Weapon>();
+			setSecondWeaponImage (weapon.UiIcon);
+		}
 		
 		// Update is called once per frame
 		void Update () {
@@ -108,10 +115,27 @@ namespace Assets.Scripts
                 AmmoInClip.text = ammoInClip.ToString();
 				ClipSlider.value = (float) ammoInClip/weaponHandler.Weapon.clipSize;
             }
+
+			if (WeaponImage.sprite != weaponHandler.Weapon.UiIcon) {
+				setMainWeaponImage(weaponHandler.Weapon.UiIcon);
+			}
 		
 		}
 		public void Reload () {
 			weaponHandler.ReloadWeapon ();
+		}
+
+		public void NextWeapon(Image img){
+			setSecondWeaponImage (WeaponImage.sprite);
+			weaponHandler.nextWeapon ();
+		}
+
+		void setMainWeaponImage(Sprite sprite){
+			WeaponImage.sprite = sprite;
+		}
+
+		void setSecondWeaponImage(Sprite sprite){
+			SecondWeaponImage.sprite = sprite;
 		}
         
         void SetAnnouncement(string text)

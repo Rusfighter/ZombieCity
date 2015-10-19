@@ -110,6 +110,7 @@ MonoBehaviour:
   animationInt: 2
   clipSize: 40
   reloadTime: 1.5
+  UiIcon: {fileID: 21300000, guid: 8592227eff5384cdcba67f69f3f5407d, type: 3}
   weaponAnimator: {fileID: 0}
 --- !u!120 &12048666
 LineRenderer:
@@ -1314,6 +1315,11 @@ Prefab:
       propertyPath: accuracy
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: UiIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8592227eff5384cdcba67f69f3f5407d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189030}
