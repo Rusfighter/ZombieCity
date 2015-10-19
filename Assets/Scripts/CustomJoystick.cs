@@ -39,7 +39,6 @@ namespace UnityStandardAssets.CrossPlatformInput
 			m_StartPos = transform.position;
 			float scaleFactor = GetComponentInParent<Canvas> ().scaleFactor;
 			MovementRange = (int) ((GetComponent<RectTransform>().rect.width/2.8f)*scaleFactor);
-			Debug.Log (GetComponent<RectTransform>().rect.width);
 		}
 		
 		void UpdateVirtualAxes(Vector3 value)

@@ -19406,7 +19406,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11457400, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
       propertyPath: startWeapon
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030a65f7b6c49fa41b341aef8958c8c5, type: 2}
@@ -19756,11 +19756,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22420122, guid: 456622d66a7b84342a037387194a3a96, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22420122, guid: 456622d66a7b84342a037387194a3a96, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 456622d66a7b84342a037387194a3a96, type: 2}

@@ -117,7 +117,9 @@ namespace Assets.Scripts
 
 					if (shootHit.collider.CompareTag("Enemy"))
                     {
-						if (Random.Range(1, 100) <= accuracy){
+						float chance = Mathf.Lerp(100, accuracy, shootHit.distance/range);
+						Debug.Log ("chance: "+chance);
+						if (Random.Range(1, 100) <= chance){
 							Enemy enemy = shootHit.collider.GetComponent<Enemy>();
 							enemy.GetHit(damage, shootRay.direction);
 						}else

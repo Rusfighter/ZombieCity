@@ -105,10 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   range: 15
-  accuracy: 70
+  accuracy: 50
   shootTime: .300000012
   animationInt: 2
-  clipSize: 20
+  clipSize: 40
   reloadTime: 1.5
   weaponAnimator: {fileID: 0}
 --- !u!120 &12048666
@@ -1308,11 +1308,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: clipSize
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: accuracy
-      value: 70
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
