@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 namespace Assets.Scripts
 {
     public class Weapon : MonoBehaviour
@@ -128,7 +129,7 @@ namespace Assets.Scripts
 					ammoInClip--;
 
 					StartEffects(shootHit.point);
-					Invoke("StopEffects", 0.05f);
+					StartCoroutine(StopEffects(0.05f));
 
 					if (shootHit.collider.CompareTag("Enemy"))
                     {
@@ -136,8 +137,7 @@ namespace Assets.Scripts
 						if (Random.Range(1, 100) <= chance){
 							Enemy enemy = shootHit.collider.GetComponent<Enemy>();
 							enemy.GetHit(damage, shootRay.direction);
-						}else
-							Debug.Log ("missed");
+						}
                     }
                 }
             }
@@ -155,8 +155,9 @@ namespace Assets.Scripts
             if (gunLight != null) gunLight.enabled = true;
         }
 
-        protected virtual void StopEffects() {
-            if (emitter == null) return;
+        protected virtual IEnumerator StopEffects(float delay) {
+            if (emitter == null) yield return null;
+			yield return new WaitForSeconds (delay);
             if (gunLine != null) gunLine.enabled = false;
             if (gunParticles != null) gunParticles.Stop();
             if (gunLight != null) gunLight.enabled = false;

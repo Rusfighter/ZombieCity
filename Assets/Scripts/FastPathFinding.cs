@@ -4,7 +4,7 @@ public class FastPathFinding : MonoBehaviour {
     public float speed; // units/s
     private NavMeshPath path;
     private float previousTime;
-    Vector3[] corners = new Vector3[200];
+    Vector3[] corners = new Vector3[30];
     private Transform _transform;
 
     void Awake()

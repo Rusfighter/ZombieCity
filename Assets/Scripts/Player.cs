@@ -12,8 +12,6 @@ namespace Assets.Scripts
         private Transform focus;
         private Enemy focusSrc;
 
-        private Transform focusEffect;
-
         public Transform Focus
         {
             set {
@@ -22,8 +20,6 @@ namespace Assets.Scripts
                 focus = value;
                 focusSrc = focus.GetComponent<Enemy>();
                 focusSrc.onFocus(this);
-
-                focusEffect.SetParent(focus, false);
 
                 Agent.ResetPath();
             }
@@ -34,12 +30,11 @@ namespace Assets.Scripts
             base.Awake();
             charAnimator = transform.GetChild(0).GetComponent<Animator>();
             weaponHandler = GetComponent<WeaponHandler>();
-            focusEffect = transform.FindChild("FocusEffect");
 			Agent.updateRotation = false;
 
 
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            Application.targetFrameRate = 30;
+            //Application.targetFrameRate = 30;
         }
 
 		void Start(){
@@ -60,7 +55,6 @@ namespace Assets.Scripts
         public void ResetFocus() {
             focus = null;
             focusSrc = null;
-            focusEffect.SetParent(transform, false);
         }
 
 
@@ -97,23 +91,5 @@ namespace Assets.Scripts
 		public void SetMovementDirection(Vector3 dir){
 			Agent.velocity = dir.normalized * Agent.speed;
 		}
-
-        /*void LookAtEnemy() {
-
-            if (focusSrc != null && focusSrc.isDead) ResetFocus();
-
-            if (focus != null && Vector3.Distance(transform.position, focus.position) <= weaponHandler.Weapon.range)
-            {
-                Agent.updateRotation = false;
-                Vector3 directionVec = focus.position - transform.position;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(directionVec), Time.deltaTime * Agent.angularSpeed/60f);
-                weaponHandler.Weapon.Activate();
-            }
-            else
-            {
-                Agent.updateRotation = true;
-                weaponHandler.Weapon.Disable();
-            }
-        }*/
     }
 }
