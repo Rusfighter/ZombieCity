@@ -1,54 +1,44 @@
-﻿using Assets.Scripts;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class GameHandler : MonoBehaviour {
-    public static GameHandler instance;
-
-    public enum LevelState {
+public class GameHandler : MonoBehaviour
+{
+    public enum LevelState
+    {
         WAVE_SETUP, WAVE_BUSY, WAVE_COMPLETED, GAME_OVER, EMPTY
     }
 
-    private int level = 1;
-    public int Level { get { return level; } }
-    private Player[] players;
-    public Player[] Players {get { return players; } }
+    public WaveGenerator m_WaveGenerator;
+    public UnityEvent m_OnstateChangeAction;
 
-    private LevelState state;
-    public LevelState State { get { return state; }set {
-            state = value;
-            onStateChanged(state);
+    private int m_Level = 1;
+    public int Level {
+        get { return m_Level; }
+    }
+    private Player[] m_Players;
+    public Player[] Players {get { return m_Players; } }
+
+    private LevelState m_State;
+    public LevelState State {
+        get { return m_State; }
+        private set {
+            m_State = value;
+            m_OnstateChangeAction.Invoke();
     } }
-    private WaveGenerator waveGenerator;
-    private PlayerControls controller;
 
     void Awake()
     {
-        if (instance == null)
-        {
-            if (FindObjectsOfType(GetType()).Length > 1)
-            {
-                Debug.LogError("To many instances of " + GetType());
-                return;
-            } else instance = this;
-        }
+        m_Players = FindObjectsOfType<Player>();
 
-        players = FindObjectsOfType<Player>();
-        if (players.Length < 1)
+        if (m_Players.Length < 1)
             Debug.LogError("No player exists!");
     }
 
     void Start()
     {
-        waveGenerator = WaveGenerator.instance;
         State = LevelState.WAVE_SETUP;
         StartCoroutine("LevelCycle");
-    }
-
-    void onStateChanged(LevelState state)
-    {
-        Debug.Log(state);
-        Debug.Log("Level: "+level);
     }
 
     IEnumerator LevelCycle()
@@ -59,23 +49,23 @@ public class GameHandler : MonoBehaviour {
             if (!existAlivePlayer())
                 State = LevelState.GAME_OVER;
 
-            switch (state)
+            switch (m_State)
             {
                 case LevelState.WAVE_SETUP:
                     yield return new WaitForSeconds(5);
-                    waveGenerator.setWave(level);
-                    waveGenerator.StartSpawning();
+                    m_WaveGenerator.setWave(m_Level);
+                    m_WaveGenerator.StartSpawning();
                     State = LevelState.WAVE_BUSY;
                     break;
                 case LevelState.WAVE_BUSY:
-                    if (waveGenerator.isWaveCompleted()){
-                        waveGenerator.StopSpawning();
+                    if (m_WaveGenerator.isWaveCompleted()){
+                        m_WaveGenerator.StopSpawning();
                         State = LevelState.WAVE_COMPLETED;
                     }
                     break;
                 case LevelState.WAVE_COMPLETED:
                     yield return new WaitForSeconds(10);
-                    level++;
+                    m_Level++;
                     State = LevelState.WAVE_SETUP;
                     break;
                 case LevelState.GAME_OVER:
@@ -89,9 +79,9 @@ public class GameHandler : MonoBehaviour {
 
     bool existAlivePlayer()
     {
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 0; i < m_Players.Length; i++)
         {
-            if (!players[i].isDead) return true;
+            if (!m_Players[i].isDead) return true;
         }
         return false;
     }

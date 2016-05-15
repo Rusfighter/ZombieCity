@@ -1,103 +1,101 @@
 ﻿using UnityEngine;
 using System.Collections;
-namespace Assets.Scripts
+public class Weapon : MonoBehaviour
 {
-    public class Weapon : MonoBehaviour
+    public int damage = 10;
+	[Range(1, 100)]
+	public int accuracy = 100;
+    public float shootTime = 0.1f;
+    public int animationInt = 1;
+	public int clipSize = 30;
+	public float reloadTime = 2;
+
+	public Sprite UiIcon;
+
+
+	private int ammoInClip; 
+
+    public int AmmoInClip {get { return ammoInClip; } }
+
+    public bool IsReloading {get { return isReloading; } }
+
+    protected bool isAutoShooting = false;
+	protected bool isReloading = false;
+
+	private LineRenderer gunLine;
+    private ParticleSystem gunParticles;
+    private Light gunLight;
+    private Transform emitter;
+
+    private Ray shootRay;
+    private RaycastHit shootHit;
+
+    private int shootAbleMask;
+
+    public Animator weaponAnimator; // use this only for reload or shoot effects
+    private string reloadString = "Reload_b";
+    private string animatorString = "WeaponType_int";
+
+    private float timeToNextEvent = 0;
+
+	private Camera mainCamera;
+	private float range;
+
+    public void Init(Animator weaponAnimator)
     {
-        public int damage = 10;
-		[Range(1, 100)]
-		public int accuracy = 100;
-        public float shootTime = 0.1f;
-        public int animationInt = 1;
-		public int clipSize = 30;
-		public float reloadTime = 2;
+        this.weaponAnimator = weaponAnimator;
+        isReloading = false;
+        isAutoShooting = false;
+        timeToNextEvent = 0;
+        weaponAnimator.SetInteger(animatorString, animationInt);
+        weaponAnimator.SetBool(reloadString, isReloading);
+    }
 
-		public Sprite UiIcon;
+    public virtual void Awake(){
 
+        emitter = transform.GetChild(0);
+        gunLine = GetComponentInChildren<LineRenderer>();
+        gunParticles = GetComponentInChildren<ParticleSystem>();
+        gunLight = GetComponentInChildren<Light>();
+        shootAbleMask = LayerMask.GetMask("ShootAble");
 
-		private int ammoInClip; 
+        ammoInClip = clipSize;
+		mainCamera = Camera.main;
 
-        public int AmmoInClip {get { return ammoInClip; } }
+		float z = mainCamera.WorldToScreenPoint (emitter.transform.position).z;
+		range = Vector3.Distance(mainCamera.ViewportToWorldPoint(new Vector3(0f,0.5f, z)), mainCamera.ViewportToWorldPoint(new Vector3(0.5f,0.5f, z))) ;
+    }
 
-        public bool IsReloading {get { return isReloading; } }
-
-        protected bool isAutoShooting = false;
-		protected bool isReloading = false;
-
-		private LineRenderer gunLine;
-        private ParticleSystem gunParticles;
-        private Light gunLight;
-        private Transform emitter;
-
-        private Ray shootRay;
-        private RaycastHit shootHit;
-
-        private int shootAbleMask;
-
-        public Animator weaponAnimator; // use this only for reload or shoot effects
-        private string reloadString = "Reload_b";
-        private string animatorString = "WeaponType_int";
-
-        private float timeToNextEvent = 0;
-
-		private Camera mainCamera;
-		private float range;
-
-        public void Init(Animator weaponAnimator)
+    void Update()
+    {
+        timeToNextEvent -= Time.deltaTime;
+        if (timeToNextEvent <= 0)
         {
-            this.weaponAnimator = weaponAnimator;
-            isReloading = false;
-            isAutoShooting = false;
-            timeToNextEvent = 0;
-            weaponAnimator.SetInteger(animatorString, animationInt);
-            weaponAnimator.SetBool(reloadString, isReloading);
-        }
-
-        public virtual void Awake(){
-
-            emitter = transform.GetChild(0);
-            gunLine = GetComponentInChildren<LineRenderer>();
-            gunParticles = GetComponentInChildren<ParticleSystem>();
-            gunLight = GetComponentInChildren<Light>();
-            shootAbleMask = LayerMask.GetMask("ShootAble");
-
-            ammoInClip = clipSize;
-			mainCamera = Camera.main;
-
-			float z = mainCamera.WorldToScreenPoint (emitter.transform.position).z;
-			range = Vector3.Distance(mainCamera.ViewportToWorldPoint(new Vector3(0f,0.5f, z)), mainCamera.ViewportToWorldPoint(new Vector3(0.5f,0.5f, z))) ;
-        }
-
-        void Update()
-        {
-            timeToNextEvent -= Time.deltaTime;
-            if (timeToNextEvent <= 0)
+            if (isReloading)
             {
-                if (isReloading)
-                {
-                    isReloading = false;
-                    ammoInClip = clipSize;
-                    weaponAnimator.SetBool(reloadString, isReloading);
-                }
-                else if (isAutoShooting)
-                {
-                    timeToNextEvent += shootTime;
-                    Shoot();
-                }
-                else timeToNextEvent = 0;
+                isReloading = false;
+                ammoInClip = clipSize;
+                weaponAnimator.SetBool(reloadString, isReloading);
             }
+            else if (isAutoShooting)
+            {
+                timeToNextEvent += shootTime;
+                Shoot();
+            }
+            else timeToNextEvent = 0;
         }
+    }
 
-        public void Activate()
-        {
-            if (isAutoShooting) return;
-            isAutoShooting = true;
-        }
+    public void Activate()
+    {
+        if (isAutoShooting) return;
+        isAutoShooting = true;
+    }
 
-        public void Disable()
-        {
-            if (!isAutoShooting) return;
-            isAutoShooting = false;
+    public void Disable()
+    {
+        if (!isAutoShooting) return;
+        isAutoShooting = false;
         }
 
 		public virtual void Reload()
@@ -163,4 +161,3 @@ namespace Assets.Scripts
             if (gunLight != null) gunLight.enabled = false;
         }
     }
-}

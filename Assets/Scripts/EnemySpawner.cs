@@ -1,32 +1,29 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+class EnemySpawner : PoolScript
 {
-    class EnemySpawner : PoolScript
-    {
-        public Player player = null;
-        [Range(1, 100)]
-        public int chance = 1;
-        public int WeightOfEnemy = 1;
-        public int amountOfEnemies = 0;
+    public Player m_Player = null;
+    [Range(1, 100)]
+    public int m_Chance = 1;
+    public int m_WeightOfEnemy = 1;
+    public int m_AmountofEnemies = 0;
 
-        public void Spawn()
-        { 
-            GameObject zombie = getPooledObj();
-            if (zombie != null)
-            {
-                zombie.transform.position = transform.position;
-                zombie.transform.rotation = transform.rotation;
-                zombie.SetActive(true);
-                zombie.GetComponent<Enemy>().Target = player;
-                amountOfEnemies += WeightOfEnemy;
-            }
-        }
-
-        public override void ResetPool()
+    public void Spawn()
+    { 
+        GameObject zombie = getPooledObj();
+        if (zombie != null)
         {
-            base.ResetPool();
-            amountOfEnemies = 0;
+            zombie.transform.position = transform.position;
+            zombie.transform.rotation = transform.rotation;
+            zombie.SetActive(true);
+            zombie.GetComponent<Enemy>().Target = m_Player;
+            m_AmountofEnemies += m_WeightOfEnemy;
         }
+    }
+
+    public override void ResetPool()
+    {
+        base.ResetPool();
+        m_AmountofEnemies = 0;
     }
 }

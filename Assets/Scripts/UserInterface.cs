@@ -2,153 +2,130 @@
 using UnityEngine.UI;
 
 using DG.Tweening;
+using System;
 
-namespace Assets.Scripts
+public class UserInterface : MonoBehaviour
 {
-	public class UserInterface : MonoBehaviour {
-		public static UserInterface instance;
-		public Text Health;
-		public Text Ammo;
-		public Text Wave;
-		public Text ZombiesLeft;
-		public Text AmmoInClip;
-        public Image WeaponImage;
-		public Image SecondWeaponImage;
-        public Text Announcement;
+    public Player m_Player;
+    public WeaponHandler m_WeaponHandler;
+    public Text m_HealthText;
+	public Text m_AmmoText;
+	public Text m_WaveText;
+	public Text m_ZombiesLeftText;
+	public Text m_ClipSizeText;
+    public Image m_WeaponImage;
+	public Image m_SecondWeaponImage;
+    public Text m_AnnouncementText;
 
-		public Slider ClipSlider;
+	public Slider m_ClipSlider;
 
-		const string WaveText = "Wave: {0}";
-		private int ammoInClip;
-		private int clipSize;
+	const string m_WaveHolder = "Wave: {0}";
+	private int m_ammoInClip;
+	private int m_ClipSize;
 
-        private float health;
-        private int wave;
-        private int zombiesLeft;
+    private bool m_IsReloading = false;
 
-        private bool isReloading = false;
+    private GameHandler.LevelState state = GameHandler.LevelState.EMPTY;
 
-        private Player player;
-        private WeaponHandler weaponHandler;
+    //Tweens
+    Tween m_ReloadTween;
+    Tween m_AnnouncementTween;
 
-        private GameHandler.LevelState state = GameHandler.LevelState.EMPTY;
+    void Awake()
+    {
+        DOTween.Init();
+    }
 
-        //Tweens
-        Tween reloadTween;
-        Tween announcementTween;
-	
-        void Awake()
-        {
-			if (instance == null)
-			{
-				if (FindObjectsOfType(GetType()).Length > 1)
-				{
-					Debug.LogError("To many instances of " + GetType());
-					return;
-				} else instance = this;
-			}
-
-            PlayerControls controls = FindObjectOfType<PlayerControls>();
-            player = controls.gameObject.GetComponent<Player>();
-            weaponHandler = controls.gameObject.GetComponent<WeaponHandler>();
-
-            DOTween.Init();
-        }
-
-		void Start(){
-			//set images, stats etc here
-			Weapon weapon = weaponHandler.getNextWeapon ().GetComponent<Weapon>();
-			setSecondWeaponImage (weapon.UiIcon);
-		}
+	void Start(){
+		//set images, stats etc here
+		/*Weapon weapon = m_WeaponHandler.getNextWeapon ().GetComponent<Weapon>();
+		setSecondWeaponImage (weapon.UiIcon);*/
+	}
 		
-		// Update is called once per frame
-		void Update () {
-			if (zombiesLeft != WaveGenerator.instance.EnemiesLeft) {
-				zombiesLeft = WaveGenerator.instance.EnemiesLeft;
-				ZombiesLeft.text = zombiesLeft.ToString();
-			}
-			if (wave != GameHandler.instance.Level) {
-				wave = GameHandler.instance.Level;
-				Wave.text = string.Format(WaveText, wave);
+	// Update is called once per frame
+	void Update () {
+		/*if (m_ZombiesLeft != WaveGenerator.instance.EnemiesLeft) {
+			m_ZombiesLeft = WaveGenerator.instance.EnemiesLeft;
+			m_ZombiesLeftText.text = m_ZombiesLeft.ToString();
+		}
 
-			}
-            if (health != player.Health)
-            {
-                health = player.Health;
-                Health.text = ((int) health).ToString();
+        if (m_Health != m_Player.Health)
+        {
+            m_Health = m_Player.Health;
+            m_HealthText.text = ((int) m_Health).ToString();
             	
-			}
+		}*/
 
-            if (state != GameHandler.instance.State)
-            {
-                state = GameHandler.instance.State;
-                switch (state)
-                {
-                    case GameHandler.LevelState.GAME_OVER:
-                        SetAnnouncement("Game Over!");
-                        break;
-                    case GameHandler.LevelState.WAVE_BUSY:
-                        SetAnnouncement("Kill all the zombies!");
-                        break;
-                    case GameHandler.LevelState.WAVE_COMPLETED:
-                        SetAnnouncement("Wave completed!");
-                        break;
-                    case GameHandler.LevelState.WAVE_SETUP:
-                        SetAnnouncement("Prepare yourself \n Bullshit is comming!");
-                        break;
-                }
-            }
-
-            if (isReloading != weaponHandler.Weapon.IsReloading)
-            {
-                isReloading = weaponHandler.Weapon.IsReloading;
-                if (reloadTween == null || !reloadTween.IsPlaying()){
-                    reloadTween = WeaponImage.DOFade(0f, 0.3f).From();
-                    reloadTween.SetLoops(int.MaxValue, LoopType.Yoyo);
-                }
-                else reloadTween.Complete();
-            }
-
-            if (ammoInClip != weaponHandler.Weapon.AmmoInClip)
-            {
-                ammoInClip = weaponHandler.Weapon.AmmoInClip;
-                AmmoInClip.text = ammoInClip.ToString();
-				ClipSlider.value = (float) ammoInClip/weaponHandler.Weapon.clipSize;
-            }
-
-			if (WeaponImage.sprite != weaponHandler.Weapon.UiIcon) {
-				setMainWeaponImage(weaponHandler.Weapon.UiIcon);
-			}
-		
-		}
-		public void Reload () {
-			weaponHandler.ReloadWeapon ();
-		}
-
-		public void NextWeapon(Image img){
-			setSecondWeaponImage (WeaponImage.sprite);
-			weaponHandler.nextWeapon ();
-		}
-
-		void setMainWeaponImage(Sprite sprite){
-			WeaponImage.sprite = sprite;
-		}
-
-		void setSecondWeaponImage(Sprite sprite){
-			SecondWeaponImage.sprite = sprite;
-		}
-        
-        void SetAnnouncement(string text)
+        /*if (m_IsReloading != m_WeaponHandler.Weapon.IsReloading)
         {
-            if (announcementTween != null && announcementTween.IsPlaying()) return;
-            Announcement.gameObject.SetActive(true);
-            announcementTween = Announcement.DOText(text, 2f, true, ScrambleMode.Numerals).OnComplete(()=> {
-                announcementTween = Announcement.DOFade(0, 0.3f).SetDelay(1.5f).OnComplete(()=> {
-                    Announcement.DOFade(1, 0);
-                    Announcement.gameObject.SetActive(false);
-                });
-            });
+            m_IsReloading = m_WeaponHandler.Weapon.IsReloading;
+            if (m_ReloadTween == null || !m_ReloadTween.IsPlaying()){
+                m_ReloadTween = m_WeaponImage.DOFade(0f, 0.3f).From();
+                m_ReloadTween.SetLoops(int.MaxValue, LoopType.Yoyo);
+            }
+            else m_ReloadTween.Complete();
         }
+
+        if (m_ammoInClip != m_WeaponHandler.Weapon.AmmoInClip)
+        {
+            m_ammoInClip = m_WeaponHandler.Weapon.AmmoInClip;
+            m_ClipSizeText.text = m_ammoInClip.ToString();
+			m_ClipSlider.value = (float) m_ammoInClip/m_WeaponHandler.Weapon.clipSize;
+        }
+
+		if (m_WeaponImage.sprite != m_WeaponHandler.Weapon.UiIcon) {
+			setMainWeaponImage(m_WeaponHandler.Weapon.UiIcon);
+		}*/
+		
 	}
 
+	public void Reload () {
+		m_WeaponHandler.ReloadWeapon ();
+	}
+
+	public void NextWeapon(Image img){
+		setSecondWeaponImage (m_WeaponImage.sprite);
+		m_WeaponHandler.nextWeapon ();
+	}
+
+	void setMainWeaponImage(Sprite sprite){
+		m_WeaponImage.sprite = sprite;
+	}
+
+	void setSecondWeaponImage(Sprite sprite){
+		m_SecondWeaponImage.sprite = sprite;
+	}
+        
+    void SetAnnouncement(string text)
+    {
+        if (m_AnnouncementTween != null && m_AnnouncementTween.IsPlaying()) return;
+        m_AnnouncementText.gameObject.SetActive(true);
+        m_AnnouncementTween = m_AnnouncementText.DOText(text, 2f, true, ScrambleMode.Numerals).OnComplete(()=> {
+            m_AnnouncementTween = m_AnnouncementText.DOFade(0, 0.3f).SetDelay(1.5f).OnComplete(()=> {
+                m_AnnouncementText.DOFade(1, 0);
+                m_AnnouncementText.gameObject.SetActive(false);
+            });
+        });
+    }
+
+    public void onNotify(GameHandler data)
+    {
+        m_WaveText.text = string.Format(m_WaveHolder, data.Level);
+
+        switch (data.State)
+        {
+            case GameHandler.LevelState.GAME_OVER:
+                SetAnnouncement("Game Over!");
+                break;
+            case GameHandler.LevelState.WAVE_BUSY:
+                SetAnnouncement("Kill all the zombies!");
+                break;
+            case GameHandler.LevelState.WAVE_COMPLETED:
+                SetAnnouncement("Wave completed!");
+                break;
+            case GameHandler.LevelState.WAVE_SETUP:
+                SetAnnouncement("Prepare yourself \n Bullshit is coming!");
+                break;
+        }
+    }
 }

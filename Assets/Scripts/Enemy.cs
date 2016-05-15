@@ -1,41 +1,39 @@
-﻿using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : Humanoid
 {
-    public float StopDistance = 30;
-    private ParticleSystem particles;
-    private Transform particleTransform;
-    private CapsuleCollider capsuleCollider;
+    public float m_StopDistance = 30;
+    private ParticleSystem m_Particles;
+    private Transform m_ParticleTrasform;
+    private CapsuleCollider m_CapsuleCollider;
 
-    private Player player;
-    private Transform playerTransform;
-    private Vector3 targetPos;
+    private Player m_Player;
+    private Transform m_PlayerTransform;
+    private Vector3 m_TargetPosition;
 
-    private Player focussedBy = null; // player who is focussing this zombie
-    private bool isEating = false;
+    private bool m_IsEating = false;
 
-    private Animation anim;
+    private Animation m_Animation;
 
-    private FastPathFinding fastPath;
+    private FastPathFinding m_FastPath;
 
-	private Transform zombieDeathParticleTransform;
-	private ParticleSystem zombieDeathParticle;
+	private Transform m_ZombieParticleTrasnform;
+	private ParticleSystem m_ZombieDeathParticle;
 
 
     public Player Target {
         set {
-                player = value;
-                playerTransform = player.transform;
-                isEating = false;
+                m_Player = value;
+                m_PlayerTransform = m_Player.transform;
+                m_IsEating = false;
             }
     }
 
     void OnEnable()
     {
-        health = baseHealth;
-        anim.Play("Zombie_Walk");
-        anim["Zombie_Walk"].speed = 2.5f;
+        m_Health = m_BaseHealth;
+        m_Animation.Play("Zombie_Walk");
+        m_Animation["Zombie_Walk"].speed = 2.5f;
 
         setItemsOffscreen(false);
     }
@@ -43,44 +41,39 @@ public class Enemy : Humanoid
     public override void Awake()
     {
         base.Awake();
-        particles = GetComponentInChildren<ParticleSystem>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
-        if (particles != null) particleTransform = particles.gameObject.transform;
+        m_Particles = GetComponentInChildren<ParticleSystem>();
+        m_CapsuleCollider = GetComponent<CapsuleCollider>();
+        if (m_Particles != null) m_ParticleTrasform = m_Particles.gameObject.transform;
 
-        anim = GetComponentInChildren<Animation>();
-        fastPath = GetComponent<FastPathFinding>();
-        fastPath.speed = Agent.speed;
+        m_Animation = GetComponentInChildren<Animation>();
+        m_FastPath = GetComponent<FastPathFinding>();
+        m_FastPath.speed = Agent.speed;
 
-		zombieDeathParticleTransform = GameObject.Find ("ZombieDeadParticle").transform;
-		zombieDeathParticle = zombieDeathParticleTransform.GetComponent<ParticleSystem> ();
+		m_ZombieParticleTrasnform = GameObject.Find ("ZombieDeadParticle").transform;
+		m_ZombieDeathParticle = m_ZombieParticleTrasnform.GetComponent<ParticleSystem> ();
     }
 
     public override void onDeath()
     {
         base.onDeath();
-        capsuleCollider.enabled = false;
+        m_CapsuleCollider.enabled = false;
         Agent.enabled = false;
         gameObject.SetActive(false);
         // particle animation
-		zombieDeathParticleTransform.position = transform.position;
-		zombieDeathParticle.Stop ();
-		zombieDeathParticle.Play ();
+		m_ZombieParticleTrasnform.position = transform.position;
+		m_ZombieDeathParticle.Stop ();
+		m_ZombieDeathParticle.Play ();
     }
 
     public void GetHit(int damage, Vector3 directionFrom)
     {
-        GetHit(damage);
-        if (particles != null)
+        Damage(damage);
+        if (m_Particles != null)
         {
-            particles.Stop();
-            particleTransform.forward = -directionFrom;
-            particles.Play();
+            m_Particles.Stop();
+            m_ParticleTrasform.forward = -directionFrom;
+            m_Particles.Play();
         }
-    }
-
-    public void onFocus(Player player)
-    {
-        focussedBy = player;
     }
 
     void Update()
@@ -95,26 +88,26 @@ public class Enemy : Humanoid
 
     public void SlowUpdate()
     {
-        if (player == null) return;
+        if (m_Player == null) return;
 
-        targetPos = playerTransform.position;
-        float dinstanceToPlayer = Vector3.Distance(targetPos, transform.position);
+        m_TargetPosition = m_PlayerTransform.position;
+        float dinstanceToPlayer = Vector3.Distance(m_TargetPosition, transform.position);
 
-        if (dinstanceToPlayer > StopDistance)
+        if (dinstanceToPlayer > m_StopDistance)
         {
             setItemsOffscreen(false);
-            fastPath.CalculatePath(playerTransform);
+            m_FastPath.CalculatePath(m_PlayerTransform);
         }
         else setItemsOffscreen(true);
 
         if (Agent.enabled) // set destination every x frames
-            setDestination(targetPos);
+            setDestination(m_TargetPosition);
 
-        if (!isEating && player.isDead)
+        if (!m_IsEating && m_Player.isDead)
         {
             if (dinstanceToPlayer < 1.8f)
             {
-                isEating = true;
+                m_IsEating = true;
             }
         }
     }

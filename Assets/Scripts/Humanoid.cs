@@ -1,45 +1,46 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-namespace Assets.Scripts
+[RequireComponent(typeof(NavMeshAgent))]
+public abstract class Humanoid : MonoBehaviour, IDamageable<float>
 {
-    [RequireComponent(typeof(NavMeshAgent))]
-    public class Humanoid : MonoBehaviour
-    {
-        private NavMeshAgent agent;
-        public float baseHealth;
-        protected float health;
+    public float m_BaseHealth;
 
-        public NavMeshAgent Agent {
-            get { return agent; } }
+    protected float m_Health = 100;
 
-        public bool isDead {
-            get { return health <= 0; }
-        }
+    private NavMeshAgent m_Agent;
 
-        public virtual void Awake()
-        {
-            agent = GetComponent<NavMeshAgent>();
-            health = baseHealth;
-        }
+    public NavMeshAgent Agent {
+        get { return m_Agent; } }
 
-        public virtual void GetHit(float damage)
-        {
-            if (isDead) return;
-            health = health - damage;
-            if (isDead) onDeath();
-        }
-
-        public virtual void onDeath()
-        {
-            agent.ResetPath();
-        }
-
-        public void setDestination(Vector3 position) {
-            if (isDead) return;
-            agent.SetDestination(position);
-        }
-		public float Health {
-			get { return health; }
-		}
+    public bool isDead {
+        get { return m_Health <= 0; }
     }
+
+    public virtual void Awake()
+    {
+        m_Agent = GetComponent<NavMeshAgent>();
+        m_Health = m_BaseHealth;
+    }
+
+    public virtual void onDeath()
+    {
+        m_Agent.ResetPath();
+    }
+
+    public void setDestination(Vector3 position) {
+        if (isDead) return;
+        m_Agent.SetDestination(position);
+    }
+
+    public void Damage(float damageTaken)
+    {
+        if (isDead) return;
+        m_Health = m_Health - damageTaken;
+        if (isDead) onDeath();
+    }
+
+    public float Health {
+		get { return m_Health; }
+	}
 }
