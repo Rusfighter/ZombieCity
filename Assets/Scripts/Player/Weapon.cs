@@ -21,14 +21,23 @@ public class Weapon : MonoBehaviour
     public bool m_AutoShoot = true;
     public Type m_WeaponType = Type.HEAVY;
 
-	public Sprite UiIcon;
+	public Sprite m_UiIcon;
 
-	private int ammoInClip; 
-    public int AmmoInClip {get { return ammoInClip; } }
+    private int m_AmmoInClip;
+
+    public int AmmoInClip {
+        get { return m_AmmoInClip; }
+        private set {
+            m_AmmoInClip = value;
+            if (onAmmoChanged != null)
+                onAmmoChanged(m_AmmoInClip);
+        }
+    }
 
 
-    //public bool IsReloading {get { return isReloading; } }
-    //protected bool isReloading = false;
+    public delegate void OnAmmoChange(int newAmmo);
+    public event OnAmmoChange onAmmoChanged;
+
 
     private State m_CurrentState = State.IDLE;
 
@@ -73,7 +82,7 @@ public class Weapon : MonoBehaviour
         gunLight = GetComponentInChildren<Light>();*/
         shootAbleMask = LayerMask.GetMask("ShootAble");
 
-        ammoInClip = clipSize;
+        AmmoInClip = clipSize;
 		mainCamera = Camera.main;
 
 		float z = mainCamera.WorldToScreenPoint (m_Emitter.transform.position).z;
@@ -99,7 +108,7 @@ public class Weapon : MonoBehaviour
                 if (m_EventTime <= 0)
                 {
                     SetState(State.IDLE, 0.05f);
-                    ammoInClip = clipSize;
+                    AmmoInClip = clipSize;
                     weaponAnimator.SetBool(reloadString, m_CurrentState == State.RELOADING);
                 }
                 break;
@@ -125,7 +134,7 @@ public class Weapon : MonoBehaviour
         //allowed to shoot
         if (m_CurrentState == State.IDLE)
         {
-            if (ammoInClip == 0)
+            if (AmmoInClip == 0)
             {
                 Reload();
                 return;
@@ -134,7 +143,7 @@ public class Weapon : MonoBehaviour
             shootRay.origin = m_Emitter.transform.position - m_Emitter.forward.normalized;
             shootRay.direction = m_Emitter.forward.normalized;
 
-            ammoInClip--;
+            AmmoInClip = AmmoInClip - 1;
             SetState(State.WAITING, shootTime);
 
             StartEffects(m_Emitter.position, m_Emitter.position+ shootRay.direction*10);

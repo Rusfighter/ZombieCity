@@ -6672,6 +6672,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11471662, guid: 456622d66a7b84342a037387194a3a96, type: 2}
+      propertyPath: m_Humanoid
+      value: 
+      objectReference: {fileID: 1199395012}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 456622d66a7b84342a037387194a3a96, type: 2}
   m_IsPrefabParent: 0
@@ -22001,7 +22005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83529c71f0962264cb787920d85b9b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 5
+  m_MoveSpeed: 6
   m_BaseHealth: 100
   m_CharAnimator: {fileID: 1793745715}
   m_WeaponHandler: {fileID: 713076132}

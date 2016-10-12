@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
-    public int m_startWeapon = 0;
-    public Weapon[] m_Weapons;
-    public Transform m_WeaponContainer;
-    public Animator m_CharAnimator;
+    [SerializeField]
+    private int m_startWeapon = 0;
+    [SerializeField]
+    private Weapon[] m_Weapons;
+    [SerializeField]
+    private Transform m_WeaponContainer;
+    [SerializeField]
+    private Animator m_CharAnimator;
     private int m_WeaponIndex = -1;
 
-
     private Weapon m_Weapon;
+    public Weapon Weapon {
+        get { return m_Weapon; }
+        set { m_Weapon = value;
+            if (onWeaponChanged != null)
+                onWeaponChanged(m_Weapon);
+        }
+    }
 
-    public Weapon Weapon { get { return m_Weapon; } }
+    public delegate void OnWeaponChanged(Weapon weapon);
+    public event OnWeaponChanged onWeaponChanged;
 
 
     void Awake()
@@ -51,8 +62,8 @@ public class WeaponManager : MonoBehaviour {
             GameObject child = m_WeaponContainer.GetChild(i).gameObject;
             if (child.name == m_Weapons[index].gameObject.name + "(Clone)") {
                 child.SetActive(true);
-                m_Weapon = child.GetComponent<Weapon>();
-                m_Weapon.Init(m_CharAnimator);
+                Weapon = child.GetComponent<Weapon>();
+                Weapon.Init(m_CharAnimator);
                 return;
             }
         }
@@ -62,10 +73,8 @@ public class WeaponManager : MonoBehaviour {
         GameObject obj = Instantiate(m_Weapons[index].gameObject);
         obj.transform.SetParent(m_WeaponContainer, false);
         obj.SetActive(true);
-        m_Weapon = obj.GetComponent<Weapon>();
-        m_Weapon.Init(m_CharAnimator);
-
-        Debug.Log("set weapon");
+        Weapon = obj.GetComponent<Weapon>();
+        Weapon.Init(m_CharAnimator);
         
     }
 }

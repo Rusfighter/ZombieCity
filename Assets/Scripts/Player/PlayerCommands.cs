@@ -7,7 +7,7 @@ public class ShootCommand : PlayerCommand
 {
     public void Execute(Player t)
     {
-        t.m_WeaponHandler.Weapon.Shoot();
+        t.WeaponManager.Weapon.Shoot();
     }
 }
 
@@ -15,7 +15,7 @@ public class NextWeaponCommand : PlayerCommand
 {
     public void Execute(Player t)
     {
-        t.m_WeaponHandler.nextWeapon();
+        t.WeaponManager.nextWeapon();
     }
 }
 

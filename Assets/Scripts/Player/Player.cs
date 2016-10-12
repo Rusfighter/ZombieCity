@@ -2,13 +2,21 @@
 
 public class Player : Humanoid
 {
-    public Animator m_CharAnimator;
-    public WeaponManager m_WeaponHandler;
+    [SerializeField]
+    private Animator m_CharAnimator;
+    [SerializeField]
+    private WeaponManager m_WeaponHandler;
+
     private Rigidbody m_Rigidbody;
 
     public InputHandler m_Input;
 
     public Camera m_Cam;
+
+    public WeaponManager WeaponManager
+    {
+        get { return m_WeaponHandler; }
+    }
     
     public Rigidbody rb
     {
@@ -23,7 +31,7 @@ public class Player : Humanoid
 
     protected override void OnStartAction()
     {
-        //m_WeaponHandler.Weapon.Activate();
+
     }
 
     void Update() {
@@ -35,8 +43,6 @@ public class Player : Humanoid
         Command<Player> command = m_Input.handleButtons();
         if (command != null)
             command.Execute(this);
-
-        //UpdateAnimation();
 	}
 
     public override void Move(Vector2 dir)
@@ -57,11 +63,6 @@ public class Player : Humanoid
         lookTo = Vector3.Cross(lookTo, Vector3.up);
         angle = Vector3.Angle(moveDirection, lookTo) * Mathf.Deg2Rad;
         m_CharAnimator.SetFloat("Turn", Mathf.Cos(angle));
-    }
-
-    public void Shoot()
-    {
-        Debug.Log("shoot");
     }
 
     public void Jump()

@@ -3,11 +3,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public abstract class Humanoid : MonoBehaviour, IDamageable<float>
+public abstract class Humanoid : MonoBehaviour, IDamageable<int>
 {
     public float m_MoveSpeed = 2;
-    public float m_BaseHealth;
-    protected float m_Health;
+    public int m_BaseHealth;
+    protected int m_Health;
+
+    public delegate void OnHealthChange(int newHealth);
+    public event OnHealthChange onHealthChanged;
 
     public bool isDead {
         get { return m_Health <= 0; }
@@ -47,12 +50,17 @@ public abstract class Humanoid : MonoBehaviour, IDamageable<float>
         OnDeathAction();
     }
 
-    public void Damage(float damageTaken)
+    public void Damage(int damageTaken)
     {
         if (isDead) return;
         m_Health = m_Health - damageTaken;
         OnDamageAction(damageTaken);
         if (isDead) onDeath();
+
+        if (onHealthChanged != null)
+        {
+            onHealthChanged(m_Health);
+        }
     }
 
     public float Health {
