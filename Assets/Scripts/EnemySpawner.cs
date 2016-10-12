@@ -16,7 +16,7 @@ class EnemySpawner : PoolScript
             zombie.transform.position = transform.position;
             zombie.transform.rotation = transform.rotation;
             zombie.SetActive(true);
-            zombie.GetComponent<Enemy>().Target = m_Player;
+            zombie.GetComponent<Zombie>().Target = m_Player;
             m_AmountofEnemies += m_WeightOfEnemy;
         }
     }

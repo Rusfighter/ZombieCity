@@ -23,8 +23,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.9000015, y: 0, z: 52.2000008}
+  m_LocalPosition: {x: 13.8, y: 0, z: -18.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,12 +40,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4566b9b52feff3840a471593521b162c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObject: {fileID: 142254, guid: 1346a201e210da643bc8e0482c7fadac, type: 2}
-  pooledAmount: 10
-  ableToGrow: 1
-  player: {fileID: 0}
-  chance: 100
-  amountOfZombies: 0
+  m_PooledObject: {fileID: 156986, guid: 37aa731d64337694daa3c94f180047e0, type: 2}
+  m_PooledAmount: 20
+  m_AbleToGrow: 1
+  m_Player: {fileID: 0}
+  m_Chance: 100
+  m_WeightOfEnemy: 1
+  m_AmountofEnemies: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -27,6 +27,9 @@ public class WaveGenerator : MonoBehaviour{
             m_TotalWeight += m_Spawners[i].m_Chance;
 
         m_SpawnRoutine = Spawn();
+
+        setWave(5);
+        StartSpawning();
     }
 
     public void StartSpawning()

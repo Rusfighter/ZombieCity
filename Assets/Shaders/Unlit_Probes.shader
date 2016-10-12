@@ -1,4 +1,6 @@
-﻿Shader "Custom/Mobile/ProbesOnly(non batching)" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/Mobile/ProbesOnly(non batching)" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
 
@@ -33,7 +35,7 @@
 				v2f o;
 				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 				o.uv = v.texcoord;
-				half3 worldN = mul((float3x3)_Object2World, SCALED_NORMAL);
+				half3 worldN = mul((float3x3)unity_ObjectToWorld, SCALED_NORMAL);
 				half3 shlight = ShadeSH9(float4(worldN,1.0));
 				//o.vlight = shlight;
 				o.vlight = pow(shlight, 0.4);

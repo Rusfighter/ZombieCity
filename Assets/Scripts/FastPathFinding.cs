@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 
-public class FastPathFinding : MonoBehaviour {
-    public float speed; // units/s
+public class FastPathFinding {
+    //public float speed; // units/s
     private NavMeshPath path;
     private float previousTime;
-    Vector3[] corners = new Vector3[30];
+    Vector3[] corners;
     private Transform _transform;
 
-    void Awake()
+    public FastPathFinding(Transform transform, int cornersSize = 30)
     {
         path = new NavMeshPath();
+        corners = new Vector3[cornersSize];
         _transform = transform;
     }
-    public void CalculatePath(Transform target)
+    public void MoveTarget(Transform target, float speed)
     {
-        Move(path, Time.timeSinceLevelLoad - previousTime);
+        Move(path, Time.timeSinceLevelLoad - previousTime, speed);
         previousTime = Time.timeSinceLevelLoad;
-        NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path);
+        NavMesh.CalculatePath(_transform.position, target.position, NavMesh.AllAreas, path);
     }
 
-    void Move(NavMeshPath path, float elapsed)
+    void Move(NavMeshPath path, float elapsed, float speed)
     {
         if (path == null) return;
         float distanceToTravel = speed * elapsed;

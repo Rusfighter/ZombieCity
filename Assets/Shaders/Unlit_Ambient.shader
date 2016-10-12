@@ -1,4 +1,6 @@
-﻿Shader "Custom/Mobile/Environment (Ambient)"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/Mobile/Environment (Ambient)"
 {
 	Properties
 	{
@@ -54,8 +56,8 @@
 				o.uv1 = v.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
 				
 				#ifdef IS_ADVANCED
-				o.vertexWorld = mul(_Object2World,v.vertex );
-				o.normal = mul(_Object2World, v.normal);
+				o.vertexWorld = mul(unity_ObjectToWorld,v.vertex );
+				o.normal = mul(unity_ObjectToWorld, v.normal);
 				#endif
 
 				return o;

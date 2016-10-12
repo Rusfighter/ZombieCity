@@ -1,4 +1,6 @@
-﻿Shader "Custom/Mobile/Dynamic (Ambient + Unlit)"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/Mobile/Dynamic (Ambient + Unlit)"
 {
 	Properties
 	{
@@ -54,8 +56,8 @@
 				
 				
 				#ifdef IS_ADVANCED
-				o.vertexWorld = mul(_Object2World,v.vertex );
-				o.normal = mul(_Object2World, v.normal);
+				o.vertexWorld = mul(unity_ObjectToWorld,v.vertex );
+				o.normal = mul(unity_ObjectToWorld, v.normal);
 				#endif
 
 				return o;

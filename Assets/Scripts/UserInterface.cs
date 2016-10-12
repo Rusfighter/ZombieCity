@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-using DG.Tweening;
-using System;
 
 public class UserInterface : MonoBehaviour
 {
     public Player m_Player;
-    public WeaponHandler m_WeaponHandler;
     public Text m_HealthText;
 	public Text m_AmmoText;
 	public Text m_WaveText;
@@ -27,13 +24,9 @@ public class UserInterface : MonoBehaviour
 
     private GameHandler.LevelState state = GameHandler.LevelState.EMPTY;
 
-    //Tweens
-    Tween m_ReloadTween;
-    Tween m_AnnouncementTween;
-
     void Awake()
     {
-        DOTween.Init();
+        //DOTween.Init();
     }
 
 	void Start(){
@@ -79,14 +72,14 @@ public class UserInterface : MonoBehaviour
 		
 	}
 
-	public void Reload () {
+	/*public void Reload () {
 		m_WeaponHandler.ReloadWeapon ();
 	}
 
 	public void NextWeapon(Image img){
 		setSecondWeaponImage (m_WeaponImage.sprite);
 		m_WeaponHandler.nextWeapon ();
-	}
+	}*/
 
 	void setMainWeaponImage(Sprite sprite){
 		m_WeaponImage.sprite = sprite;
@@ -98,14 +91,7 @@ public class UserInterface : MonoBehaviour
         
     void SetAnnouncement(string text)
     {
-        if (m_AnnouncementTween != null && m_AnnouncementTween.IsPlaying()) return;
-        m_AnnouncementText.gameObject.SetActive(true);
-        m_AnnouncementTween = m_AnnouncementText.DOText(text, 2f, true, ScrambleMode.Numerals).OnComplete(()=> {
-            m_AnnouncementTween = m_AnnouncementText.DOFade(0, 0.3f).SetDelay(1.5f).OnComplete(()=> {
-                m_AnnouncementText.DOFade(1, 0);
-                m_AnnouncementText.gameObject.SetActive(false);
-            });
-        });
+        
     }
 
     public void onNotify(GameHandler data)
